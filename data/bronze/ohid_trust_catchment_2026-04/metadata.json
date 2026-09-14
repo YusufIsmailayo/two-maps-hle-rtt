@@ -1,0 +1,18 @@
+{
+  "publisher": "Office for Health Improvement and Disparities",
+  "publication_name": "NHS acute (hospital) trust catchment populations: April 2026",
+  "published_date": "2026-04-28",
+  "source_page": "https://www.gov.uk/government/statistics/nhs-acute-hospital-trust-catchment-populations-april-2026",
+  "grain": "MSOA (2021) x acute trust x catchment year",
+  "note": "HES APC, 3-year pooled (FY2021/22-2023/24 for 2023; FY2022/23-2024/25 for 2024). Counts rounded to nearest 5; trusts with <8 admissions from an MSOA suppressed; shares <5% flagged 'not shown'. Acute trusts only (134).",
+  "files": [
+    {
+      "filename": "nhs-acute-hospital-trust-catchment-populations-data_tables-april-2026.ods",
+      "source_url": "https://assets.publishing.service.gov.uk/media/6a199144050971fbebf3bc3f/nhs-acute-hospital-trust-catchment-populations-data_tables-april-2026.ods",
+      "description": "Table 2 (All_admissions): MSOA21 of residence x acute trust x patients admitted x share x first-past-the-post flag, catchment years 2023 and 2024. Table 7: trust lookup (type, HQ LSOA, LTLA, region).",
+      "bytes": 18829508,
+      "sha256": "7f7639b2cc056fe0d4c388a3d71eb59015b219bcba8cba78e1672c0b7b47a997"
+    }
+  ],
+  "downloaded_at_utc": "2026-09-14T09:00:42+00:00"
+}

@@ -1,0 +1,23 @@
+check,sex,metric,ons,fingertips,diff,pass,note
+A_england_headline,Male,hle,65.1,65.1,0.0,True,
+A_england_headline,Male,hle_lci,65.1,65.1,0.0,True,
+A_england_headline,Male,hle_uci,65.1,65.1,0.0,True,
+A_england_headline,Female,hle,66.5,66.5,0.0,True,
+A_england_headline,Female,hle_lci,66.5,66.5,0.0,True,
+A_england_headline,Female,hle_uci,66.6,66.6,0.0,True,
+B_msoa_row_for_row,both,rows_compared,13712.0,13712.0,0.0,True,
+B_msoa_row_for_row,both,value_mismatches,,,0.0,True,
+B_msoa_row_for_row,both,excluded_in_both,1.0,1.0,1.0,True,
+C_bulletin_distribution,Male,median,65.3,65.3,0.0,True,
+C_bulletin_distribution,Male,iqr,7.4,7.4,0.0,True,
+C_bulletin_distribution,Male,p10,57.7,57.7,0.0,True,
+C_bulletin_distribution,Male,p90,71.0,71.0,0.0,True,
+C_bulletin_distribution,Male,interdecile,13.4,13.3,-0.1,True,derived from 1dp published values; ONS uses unrounded
+C_bulletin_distribution,Female,median,66.8,66.8,0.0,True,
+C_bulletin_distribution,Female,iqr,7.8,7.8,-0.0,True,
+C_bulletin_distribution,Female,p10,58.6,58.6,0.0,True,
+C_bulletin_distribution,Female,p90,72.6,72.6,0.0,True,
+C_bulletin_distribution,Female,interdecile,14.0,14.0,-0.0,True,derived from 1dp published values; ONS uses unrounded
+D_rtt_vs_press_notice,n/a,incomplete_pathways_millions,7.3,7.16,-0.14,True,SPN includes estimates for 4 non-reporting providers; extract does not
+D_rtt_vs_press_notice,n/a,pct_within_18_weeks,65.4,65.3,-0.1,True,'ons' column = NHS England SPN
+D_rtt_vs_press_notice,n/a,over_52_weeks,111379.0,111429.0,50.0,True,'ons' column = NHS England SPN

@@ -1,0 +1,18 @@
+{
+  "publisher": "Office for National Statistics",
+  "publication_name": "Health state life expectancy estimates for Middle layer Super Output Areas, England and Wales: 2019 to 2023",
+  "published_date": "2026-07-30",
+  "source_page": "https://www.ons.gov.uk/peoplepopulationandcommunity/healthandsocialcare/healthandlifeexpectancies/datasets/healthstatelifeexpectancyestimatesformiddlelayersuperoutputareasenglandandwales",
+  "grain": "MSOA (2021) x sex; national rows for England and Wales",
+  "note": "Sullivan method; health prevalence from Census 2021 general health; deaths and MYE pooled 2019-2023. ONS: NOT comparable with the APS-based national HLE series.",
+  "files": [
+    {
+      "filename": "hslemsoa.xlsx",
+      "source_url": "https://www.ons.gov.uk/file?uri=/peoplepopulationandcommunity/healthandsocialcare/healthandlifeexpectancies/datasets/healthstatelifeexpectancyestimatesformiddlelayersuperoutputareasenglandandwales/2019to2023/hslemsoa.xlsx",
+      "description": "Sheets 1-3: LE / HLE / DFLE at birth by sex, MSOA21 + England + Wales. Sheet 4: MSOAs with implausible LE.",
+      "bytes": 2831741,
+      "sha256": "43ee369b7aef218ab2382882714d3cfb9b005cf8d34dea884d1f49137f150cd5"
+    }
+  ],
+  "downloaded_at_utc": "2026-09-14T09:00:35+00:00"
+}

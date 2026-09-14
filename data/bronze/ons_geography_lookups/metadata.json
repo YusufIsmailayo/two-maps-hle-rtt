@@ -1,0 +1,32 @@
+{
+  "publisher": "Office for National Statistics (Open Geography Portal)",
+  "publication_name": "Open Geography Portal lookups",
+  "published_date": "2026-04 (ICB/LSOA lookup); 2023-04 (OA-LSOA-MSOA-LAD); 2024-12 (LAD-Region)",
+  "source_page": "https://geoportal.statistics.gov.uk/",
+  "grain": "LSOA21 / OA21 / LAD",
+  "note": "ICBs reorganised April 2026 (42 -> 36). LAD vintages differ between lookups (LAD23 vs LAD26); Silver checks coverage explicitly.",
+  "files": [
+    {
+      "filename": "LSOA21_SICBL26_ICB26_NHSER26_LAD26_EN_LU.csv",
+      "source_url": "https://hub.arcgis.com/api/v3/datasets/bebf631bb1ac40cf9ec7dc060897ca99_0/downloads/data?format=csv&spatialRefId=4326&where=1%3D1",
+      "description": "LSOA (2021) to SICBL to ICB to NHSER to LAD (April 2026) Lookup in EN. CDH columns are ODS codes.",
+      "bytes": 6538412,
+      "sha256": "6cdd0cb55f2e05ec4e0ab74189a7580addb6bd03ee3b0ee370da6128218bce50"
+    },
+    {
+      "filename": "OA21_LSOA21_MSOA21_LAD23_EN_LU.csv",
+      "source_url": "https://hub.arcgis.com/api/v3/datasets/821c4e07c07042e0bee806dfec5a1f77_0/downloads/data?format=csv&spatialRefId=4326&where=1%3D1",
+      "description": "Output Area (2021) to LSOA to MSOA to LEP to LAD (April 2023) Best Fit Lookup in EN. Used for LSOA21 -> MSOA21 nesting.",
+      "bytes": 21931672,
+      "sha256": "302e4dc4b24f71ff441bacab8652f0277cedb33f2c1a7952a68b611ecdfd24c9"
+    },
+    {
+      "filename": "LAD24_RGN24_EN_LU.csv",
+      "source_url": "https://hub.arcgis.com/api/v3/datasets/3959874c514b470e9dd160acdc00c97a_0/downloads/data?format=csv&spatialRefId=4326&where=1%3D1",
+      "description": "Local Authority District to Region (December 2024) Lookup in EN.",
+      "bytes": 14372,
+      "sha256": "73672e80f312c128de148d593c0bc07b50e74ec016e840814fa166664d47ef4a"
+    }
+  ],
+  "downloaded_at_utc": "2026-09-14T09:00:41+00:00"
+}

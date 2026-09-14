@@ -1,0 +1,21 @@
+route,test,value,verdict
+A_icb_footprint,ICB keys join (RTT parent ODS vs ONS ICB26CDH),36 of 36 both sides,clean at key level
+A_icb_footprint,MSOAs straddling two ICBs (LSOA-level),5,"assigned by LSOA majority, flagged"
+A_icb_footprint,catchment trusts absent from July 2026 RTT provider list,"4 of 134: ['RA9', 'RHQ', 'RK9', 'RVJ']",non-submitters / merged codes - no parent ICB assignable
+A_icb_footprint,England: share of ELECTIVE acute admissions treated by a trust parented by a different ICB from the patient's residence,14.0%,the elective (RTT-relevant) leakage
+A_icb_footprint,England: share of ALL acute admissions treated by a trust parented by a different ICB from the patient's residence,13.1%,ICB footprint is not a closed system
+A_icb_footprint,"resident view: ICB leakage, median / max",13.8% / 47.0% (Staffordshire and Stoke-on-Trent),
+A_icb_footprint,trust view: share of trusts with >25% of admitted patients from outside parent ICB,22 of 130,
+B_first_past_the_post,MSOAs with exactly one FPTP trust (elective admissions),6856 of 6856,join key exists
+B_first_past_the_post,MSOAs whose dominant trust differs between elective and all-admissions catchments,126,the 'main trust' depends on which admissions you count
+B_first_past_the_post,share of MSOA's ELECTIVE admissions taken by its FPTP trust: p10 / median / p90,52% / 76% / 91%,"a majority, not a mapping"
+B_first_past_the_post,MSOAs whose FPTP trust takes under half their admissions,556 (8.1%),
+B_first_past_the_post,MSOAs whose FPTP trust did not submit RTT in July 2026,"228 (['Torbay and South Devon NHS Foundation Trust', 'Sheffield Teaching Hospitals NHS Foundation Trust', 'University Hospitals Plymouth NHS Trust', 'North Bristol NHS Trust'])",no access figure at all for these neighbourhoods this month
+B_first_past_the_post,England waiting list at providers with NO residence footprint (not in catchment file),"7.1% of pathways, 403 of 533 providers","acute-only crosswalk misses every ISP, community and mental health provider"
+B_first_past_the_post,"...of which, by provider kind (pathways)","{'independent sector (N-code)': 324684, 'other (non-R/N ODS code)': 117209, 'NHS trust': 69722}",
+B_first_past_the_post,|FPTP trust 18wk% - admissions-weighted 18wk% across all the MSOA's trusts|: median / p90 / max (pp),0.8 / 3.0 / 12.8,the error you accept by calling the join clean
+C_commissioner,RTT commissioner codes that are Sub-ICB locations,106 of 121,
+C_commissioner,share of England waiting list commissioned by a non-SICBL body,1.7%,NHS England specialised commissioning etc. - no residence
+C_commissioner,MSOAs straddling two SICBLs,22,flagged
+C_commissioner,what a SICBL is,"GP-registered population of the sub-ICB location, 106 units of ~500k people","residence-adjacent, not residence; and it measures who pays, not where you are treated"
+D_trust_address,MSOAs containing an acute trust HQ,131 of 6856,"a point, not a population"

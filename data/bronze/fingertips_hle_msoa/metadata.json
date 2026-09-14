@@ -1,0 +1,25 @@
+{
+  "publisher": "Office for Health Improvement and Disparities",
+  "publication_name": "Local health, public health data for small geographic areas - September 2026 update",
+  "published_date": "2026-09-02",
+  "source_page": "https://fingertips.phe.org.uk/profile/local-health",
+  "grain": "MSOA (2021) x sex; England rows",
+  "note": "OHID redistributes the ONS MSOA HSLE release; the Fingertips England row is the figure the article calls 'OHID's published England HLE'.",
+  "files": [
+    {
+      "filename": "hle_94359_msoa.csv",
+      "source_url": "https://fingertips.phe.org.uk/api/all_data/csv/by_indicator_id?indicator_ids=94359&child_area_type_id=3&parent_area_type_id=15",
+      "description": "Indicator 94359 'Healthy life expectancy at birth 2021 Census based'; area type 3 (MSOA - codes are 2021 MSOAs) with England parent rows.",
+      "bytes": 2905812,
+      "sha256": "642b5e144630f59743cf07b7d8a567ad7c75b8e8cbb792485968fcfd0b6e8f56"
+    },
+    {
+      "filename": "indicator_94359_metadata.json",
+      "source_url": "https://fingertips.phe.org.uk/api/indicator_metadata/by_indicator_id?indicator_ids=94359",
+      "description": "Indicator metadata as served by the Fingertips API.",
+      "bytes": 782,
+      "sha256": "64aad45522fd2507b698c6401bd11b2beea0dfc3e45e55b9652acdc9a0b3cf7b"
+    }
+  ],
+  "downloaded_at_utc": "2026-09-14T09:00:38+00:00"
+}

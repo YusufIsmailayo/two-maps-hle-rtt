@@ -5,11 +5,15 @@ __pycache__/
 venv/
 .ipynb_checkpoints/
 
-# Raw payloads stay out of git; metadata.json provenance stubs are committed
+# Bronze: raw payloads stay out of git; provenance stubs are committed
 data/bronze/*
 !data/bronze/.gitkeep
-!data/bronze/**/metadata.json
+!data/bronze/*/
+data/bronze/*/*
+!data/bronze/*/metadata.json
+
+# Silver: rebuildable from Bronze
 data/silver/*
 !data/silver/.gitkeep
-data/gold/*
-!data/gold/.gitkeep
+
+# Gold: committed (small) so findings and the chart are inspectable without a rebuild
