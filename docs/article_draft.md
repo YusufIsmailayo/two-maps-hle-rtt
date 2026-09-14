@@ -3,10 +3,9 @@ DRAFT v1 — 14 Sep 2026. Every figure below is in data/gold/ (file named in
 [brackets] on first use; strip the brackets before publishing). Nothing is
 estimated in prose.
 
-Title options — the original no longer describes what the data showed:
-  (a) I Laid the Two Halves of the Postcode Lottery on Top of Each Other. They Don't Touch.
-  (b) Two Maps of England, Finally Lined Up  — (paradox mode: quieter)
-  (c) Where You Live and Where You Wait Are Two Different Lotteries
+Title: settled on the paradox mode. The original — "Refuse to Line Up" — is
+not true of what the data showed, and writing around it would have been the
+dishonest option.
 -->
 
 # Two Maps of England, Finally Lined Up
@@ -17,9 +16,9 @@ Title options — the original no longer describes what the data showed:
 
 Somewhere in England this morning, two people are getting up in houses twenty minutes apart by car.
 
-One of them can expect to reach 71 in good health. The other will be lucky to see 58 that way. Same country. Same NHS. Same region, probably the same integrated care board. Thirteen years apart before either of them is ill.
+One of them can expect to reach 71 in good health. The other will be lucky to see 58 that way. Same country. Same NHS. Same council. Thirteen years apart before either of them is ill.
 
-That is not a worst case. It is the gap between the tenth-best and the tenth-worst neighbourhood in every hundred.
+That is not a worst case. It is close to the average case. Of the 277 English local authorities large enough to measure, the typical one spans 13.3 years of healthy life between its best neighbourhood and its worst, and 144 of them span more than that [01_spread/lad_spread_summary.csv]. In Wirral the distance is 25 years, from 47.8 to 73.2. You do not need to cross a county to find it. You need a bus.
 
 ## What was published on 2 September
 
@@ -35,7 +34,7 @@ So I set out to prove the map doesn't exist. That's not what happened.
 
 At the end of July 2026 there were 7.16 million open referral-to-treatment pathways in England [05_silver rtt; 00_reconciliation]. The standard says 92% of patients should have waited 18 weeks or less. In July, 65.3% had. In 111,429 cases the patient had been waiting more than a year.
 
-The 18-week share is not one number, it is 533 numbers, one per provider. Among the acute trusts that serve as the main hospital for at least ten neighbourhoods, it runs from about 50% to about 84% [03_joined/trust_catchment_hle_male.csv] — a 34-point spread. Oral surgery is the specialty furthest from the standard nationally, at 54% within 18 weeks.
+The 18-week share is not one number, it is 533 numbers, one per provider. Among the acute trusts that serve as the main hospital for at least ten neighbourhoods, it runs from about 50% to about 84% [03_joined/trust_catchment_hle_male.csv] — a 34-point spread. No treatment function in England met the 92% standard in July. Oral surgery was furthest from it at 54.2%, then ear, nose and throat at 57.6%; the best of the twenty-three, elderly medicine, reached 83.8% [06_specialty/specialty_headline.csv].
 
 That spread is the reason the question matters. If the trusts doing worst on waiting are the ones serving the places doing worst on health, the two halves of the lottery compound. If they aren't, they don't.
 
@@ -60,7 +59,9 @@ The correlation between a neighbourhood's healthy life expectancy and the 18-wee
 
 Put it another way. Take the quarter of main hospitals with the worst 18-week performance and look at the neighbourhoods they serve: their median healthy life expectancy for men is 65.8 years. Take the quarter doing best: 65.0. There is no gradient. The places losing the most healthy years are not, as a group, waiting any longer than anyone else. Nor any less.
 
-The obvious explanation is that my join is too rough to see it. I don't think that survives the numbers above — a join that shifts the typical neighbourhood's figure by under a point cannot hide a relationship that exists. The less comfortable explanation is that the relationship, at this level, isn't there.
+The obvious explanation is that my join is too rough to see it. That deserves a test rather than a denial, and there is one available: if the crosswalk were the problem, sharpening it should recover some signal. It doesn't. The admissions-weighted version — every trust a neighbourhood actually uses, in proportion, rather than just the biggest one — returns the same −0.006. Refining the join moves nothing, which is what you would expect if there were nothing there to refine towards.
+
+That is an inference and I want to mark it as one. A join can be accurate at the level of each neighbourhood and still be the wrong unit of analysis altogether. But the less comfortable reading is the simpler one: at this level, the relationship isn't there.
 
 ## The objection, and what the chart does to it
 
@@ -68,7 +69,7 @@ The reply I expected to this piece was: you don't need a neighbourhood-to-hospit
 
 Two things happen when you do [02_crosswalk/A_icb_table.csv].
 
-The first is leakage. Fourteen per cent of elective admissions in England are treated by a trust whose parent ICB is not the patient's. In Staffordshire and Stoke-on-Trent, 47% of residents' acute admissions are to trusts outside its ICB — Burton, Wolverhampton, Birmingham — none of which report to Staffordshire. Frimley Health draws four-fifths of its patients from outside the ICB it belongs to.
+The first is leakage. Fourteen per cent of elective admissions in England are treated by a trust whose parent ICB is not the patient's. Turn that around and view it from where people live: the typical ICB sees 14% of its residents' acute admissions go to trusts it does not manage, and Staffordshire and Stoke-on-Trent sees 47% — to Burton, to Wolverhampton, to Birmingham, none of which report to it. The traffic runs the other way too. Frimley Health draws four-fifths of its patients from outside the ICB it belongs to.
 
 The second is the chart.
 
