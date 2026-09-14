@@ -1,0 +1,6 @@
+requests
+pandas
+pyarrow
+openpyxl
+odfpy
+matplotlib

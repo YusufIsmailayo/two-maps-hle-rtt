@@ -1,0 +1,95 @@
+"""
+Gold 4: the chart that carries the argument.
+
+One row per ICB (36, April 2026), every constituent MSOA's healthy life
+expectancy as a mark along the row, ICB median called out, rows ordered by
+median. The shaded vertical band is the full spread of the 36 ICB medians -
+the "between" distance. The claim is proven visually if every row's marks
+extend beyond the band on both sides. Two panels, males and females, same
+row order (male median) so the eye can compare.
+
+Two rows are annotated with the 18-week RTT share of providers parented by
+that ICB (July 2026) - the top and bottom ICB by HLE - to show how little an
+access figure at ICB level says about a neighbourhood.
+"""
+
+from __future__ import annotations
+
+import sys
+from pathlib import Path
+
+import matplotlib
+matplotlib.use("Agg")
+import matplotlib.pyplot as plt  # noqa: E402
+import numpy as np  # noqa: E402
+import pandas as pd  # noqa: E402
+
+sys.path.insert(0, str(Path(__file__).resolve().parent))
+from _common import GOLD_DIR  # noqa: E402
+
+OUT = GOLD_DIR / "04_chart"
+OUT.mkdir(parents=True, exist_ok=True)
+
+INK, INK2, MUTED, GRID = "#0b0b0b", "#52514e", "#9a9891", "#e6e4de"
+ACCENT = "#2a78d6"   # series-1
+BAND = "#eb6834"     # series-2, used only for the between-ICB band
+
+
+def main() -> None:
+    m = pd.read_parquet(GOLD_DIR / "01_spread" / "msoa_hle_icb.parquet").dropna(subset=["hle"])
+    icb = pd.read_csv(GOLD_DIR / "02_crosswalk" / "A_icb_table.csv")
+    order = (m[m.sex == "Male"].groupby("icb_name_short").hle.median().sort_values(ascending=True).index.tolist())
+    ypos = {name: i for i, name in enumerate(order)}
+    rtt = icb.set_index("icb_name_short").pct_within_18
+
+    fig, axes = plt.subplots(1, 2, figsize=(14, 12), sharey=True)
+    fig.patch.set_facecolor("#fcfcfb")
+    rng = np.random.default_rng(7)
+    for ax, sex in zip(axes, ["Male", "Female"]):
+        d = m[m.sex == sex]
+        med = d.groupby("icb_name_short").hle.median()
+        lo, hi = med.min(), med.max()
+        ax.axvspan(lo, hi, color=BAND, alpha=0.10, lw=0, zorder=0)
+        ax.set_facecolor("#fcfcfb")
+        for name, g in d.groupby("icb_name_short"):
+            y = ypos[name]
+            jitter = rng.uniform(-0.28, 0.28, len(g))
+            ax.scatter(g.hle, y + jitter, s=9, color=MUTED, alpha=0.45, lw=0, zorder=2)
+            ax.scatter([med[name]], [y], s=64, color=ACCENT, edgecolor="#fcfcfb", lw=1.2, zorder=4)
+        ax.set_yticks(range(len(order)))
+        ax.set_yticklabels(order, fontsize=8.5, color=INK2)
+        ax.set_xlim(45, 90)
+        ax.set_xlabel(f"Healthy life expectancy at birth, {sex.lower()}s, 2019–23 (years)", fontsize=9.5, color=INK2)
+        ax.tick_params(axis="x", labelsize=8.5, colors=INK2)
+        ax.grid(axis="x", color=GRID, lw=0.8, zorder=1)
+        for s in ["top", "right", "left"]:
+            ax.spines[s].set_visible(False)
+        ax.spines["bottom"].set_color(GRID)
+        ax.tick_params(axis="y", length=0)
+        ax.text(lo + (hi - lo) / 2, len(order) - 0.2, f"spread of the 36 ICB medians: {hi - lo:.1f} yrs",
+                ha="center", va="bottom", fontsize=8.5, color=BAND)
+        # annotate top and bottom rows with ICB-level RTT
+        for name in [order[0], order[-1]]:
+            y = ypos[name]
+            x = d[d.icb_name_short == name].hle.max() + 0.6
+            ax.annotate(f"RTT: {rtt[name]:.0%} within 18 wks\n(providers parented by this ICB)",
+                        xy=(x, y), fontsize=7.2, color=INK2, va="center", ha="left", linespacing=1.1)
+    axes[0].set_ylim(-0.8, len(order) + 0.9)
+
+    fig.suptitle("Inside every ICB, neighbourhood healthy life expectancy spans more years than separate the best and worst ICB",
+                 fontsize=13, color=INK, x=0.01, ha="left", y=0.985)
+    fig.text(0.01, 0.955, "Each grey mark is one MSOA (6,856 in England). Blue mark: median of the ICB's MSOAs. Rows ordered by male median. "
+             "Orange band: the whole distance between the highest- and lowest-median ICB.",
+             fontsize=9, color=INK2)
+    fig.text(0.01, 0.022, "Source: ONS, Health state life expectancy estimates for MSOAs, England and Wales: 2019 to 2023 (30 Jul 2026), "
+             "redistributed by OHID Local health (2 Sep 2026); ONS Open Geography Portal LSOA→ICB (Apr 2026); NHS England RTT July 2026.",
+             fontsize=7.5, color=INK2)
+    fig.text(0.01, 0.008, "HLE uses Census 2021 health prevalence and is not comparable with the APS-based national series. "
+             "One MSOA-sex (Barnet 042, male) excluded by ONS as implausible.", fontsize=7.5, color=INK2)
+    fig.tight_layout(rect=(0, 0.035, 1, 0.94))
+    fig.savefig(OUT / "icb_strip_hle.png", dpi=180, facecolor=fig.get_facecolor())
+    print("wrote", OUT / "icb_strip_hle.png")
+
+
+if __name__ == "__main__":
+    main()
