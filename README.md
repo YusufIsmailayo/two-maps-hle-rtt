@@ -51,7 +51,7 @@ src/pipeline/
   10_gold_chart.py             the strip chart
 ```
 
-Run in order: `for f in src/pipeline/0*.py src/pipeline/10*.py; do python3 $f || break; done`
+Run in order: `for f in src/pipeline/0*.py src/pipeline/10*.py; do python3 $f || break; done` — or follow the three notebooks in `notebooks/` (`01_bronze`, `02_silver`, `03_gold`), which run the same steps and inspect what each produced.
 
 ## Headline numbers (all reproducible from `data/gold/`)
 
