@@ -81,7 +81,17 @@ feasible enough to try, so the pipeline tries it: every MSOA gets its
 dominant elective trust's 18-week share, and an admissions-weighted share
 across all the trusts it uses.
 
-- Pearson r, MSOA HLE vs dominant trust's 18-week share: **−0.008 (M), −0.006 (F)**. Spearman: 0.003 / 0.006. Weighted: −0.006 / −0.006. n ≈ 6,600.
+- Pearson r, MSOA HLE vs dominant trust's 18-week share: **−0.008 (M), −0.006 (F)** for July 2026. Spearman: 0.003 / 0.006. Weighted: −0.006 / −0.006. n ≈ 6,600.
+- Not a one-month artefact (`data/gold/05_months/by_month.csv`):
+
+  | month | England ≤18 wks | MSOAs with an RTT figure | r (M) | r (F) | ICB-level r (M) | ICB-level r (F) |
+  |---|---|---|---|---|---|---|
+  | Apr 2026 | 64.9% | 6,748 | −0.021 | −0.017 | −0.17 | −0.13 |
+  | May 2026 | 65.5% | 6,748 | −0.019 | −0.015 | −0.17 | −0.13 |
+  | Jun 2026 | 65.8% | 6,748 | −0.017 | −0.014 | −0.21 | −0.17 |
+  | Jul 2026 | 65.3% | 6,628 | −0.008 | −0.006 | −0.18 | −0.14 |
+
+  July's lower MSOA count is Sheffield Teaching Hospitals not submitting that month.
 - 73–74% of MSOA HLE variance is within trust catchments.
 - Median within-catchment HLE range (trusts with ≥10 MSOAs): 16.7 (M) / 17.4 (F) years, against a 13.5 / 14.5 range of catchment medians.
 - Trusts' 18-week share ranges 34 pp (IQR 7 pp); the neighbourhoods behind the worst-waiting quartile have median HLE 65.8 (M) vs 65.0 for the best-waiting quartile — no gradient.
@@ -99,6 +109,6 @@ with the healthy years of the people waiting.
 
 - HLE 2019–2023 straddles the pandemic; five-year pooling; Census 2021 health prevalence assumed constant across the period.
 - Not comparable with the APS-based national HLE (England ~61–62). The 65.1 / 66.5 here is the Census-based figure.
-- RTT is one month (July 2026). Four providers did not submit.
+- RTT is a monthly snapshot; July 2026 is the headline month and four providers did not submit it. April–June are used only to check the result is stable.
 - The catchment crosswalk is admissions, not RTT pathways; acute only; rounded to 5; <8 admissions suppressed.
 - No causal claim in either direction. Zero correlation at neighbourhood-by-dominant-trust level does not mean waiting is unrelated to health for individuals.

@@ -46,7 +46,9 @@ NON_SUBMITTERS_JUL26 = {"RHQ": "Sheffield Teaching Hospitals", "RA9": "Torbay an
 def main() -> None:
     geo = pd.read_parquet(SILVER_DIR / "geography" / "msoa_geography.parquet")
     lsoa = pd.read_parquet(SILVER_DIR / "geography" / "lsoa_geography.parquet")
-    prov = pd.read_parquet(SILVER_DIR / "rtt" / "rtt_provider.parquet")
+    prov_all = pd.read_parquet(SILVER_DIR / "rtt" / "rtt_provider.parquet")
+    PERIOD = prov_all.period.max()                       # headline month; 11_gold_months repeats the tests per month
+    prov = prov_all[prov_all.period == PERIOD].drop(columns="period").reset_index(drop=True)
     cat_all = pd.read_parquet(SILVER_DIR / "catchment" / "msoa_trust_admissions.parquet")
     cat_all = cat_all[cat_all.catchment_year == 2024]
     cat = cat_all[cat_all.admission_type == "elective"].copy()      # RTT is elective: join on elective catchment
@@ -64,6 +66,7 @@ def main() -> None:
     icb_rtt["n_providers"] = prov.groupby("provider_icb_ods").size().values
     icb_msoa = geo.groupby("icb_ods").size().rename("n_msoa")
     a = icb_rtt.merge(icb_msoa, left_on="provider_icb_ods", right_index=True, how="outer", indicator=True)
+    findings.append({"route": "_", "test": "RTT month used", "value": PERIOD, "verdict": ""})
     findings.append({"route": "A_icb_footprint", "test": "ICB keys join (RTT parent ODS vs ONS ICB26CDH)",
                      "value": f"{(a._merge == 'both').sum()} of {len(a)} both sides", "verdict": "clean at key level"})
     findings.append({"route": "A_icb_footprint", "test": "MSOAs straddling two ICBs (LSOA-level)",
@@ -159,7 +162,7 @@ def main() -> None:
     # Needs the commissioner-grain rows, which Silver rolled up; re-read the raw incomplete rows' commissioner codes.
     import zipfile
     from _common import BRONZE_DIR
-    with zipfile.ZipFile(BRONZE_DIR / "nhse_rtt_2026-07" / "Full-CSV-data-file-Jul26.zip") as z:
+    with zipfile.ZipFile(next((BRONZE_DIR / f"nhse_rtt_{PERIOD}").glob("*.zip"))) as z:
         name = [n for n in z.namelist() if n.endswith(".csv")][0]
         raw = pd.read_csv(z.open(name), usecols=["RTT Part Description", "Commissioner Org Code", "Commissioner Org Name",
                                                  "Treatment Function Code", "Total All"], low_memory=False)

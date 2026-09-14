@@ -1,0 +1,5 @@
+period,providers,england_pct_within_18,msoas_with_fptp_rtt,r_msoa_fptp_male,rho_msoa_fptp_male,r_msoa_weighted_male,r_icb_male,r_msoa_fptp_female,rho_msoa_fptp_female,r_msoa_weighted_female,r_icb_female
+2026-04,528,0.649,6748,-0.021,-0.009,-0.019,-0.166,-0.017,-0.004,-0.018,-0.125
+2026-05,532,0.655,6748,-0.019,-0.008,-0.02,-0.166,-0.015,-0.003,-0.019,-0.126
+2026-06,537,0.6577,6748,-0.017,-0.005,-0.021,-0.205,-0.014,-0.001,-0.02,-0.165
+2026-07,533,0.6525,6628,-0.008,0.003,-0.006,-0.175,-0.006,0.005,-0.006,-0.136

@@ -4,15 +4,15 @@
   "published_date": "2026-09-10",
   "source_page": "https://www.england.nhs.uk/statistics/statistical-work-areas/rtt-waiting-times/rtt-data-2026-27/",
   "grain": "provider x commissioner x RTT part x treatment function (month = July 2026)",
-  "note": "Provider Parent Org Code is the provider's ICB (ODS code, post April 2026 reorganisation - 36 ICBs).",
+  "note": "Provider Parent Org Code is the provider's ICB (ODS code, post April 2026 reorganisation - 36 ICBs). Publication dates for Apr-Jun are the scheduled second-Thursday releases; the July date is confirmed from the press notice.",
   "files": [
     {
-      "filename": "Full-CSV-data-file-Jul26.zip",
+      "filename": "Full-CSV-data-file-Jul26-ZIP-4M-97ylx5.zip",
       "source_url": "https://www.england.nhs.uk/statistics/wp-content/uploads/sites/2/2026/09/Full-CSV-data-file-Jul26-ZIP-4M-97ylx5.zip",
       "description": "Full extract: provider x commissioner x RTT part x treatment function x weekly wait bands (0-104+).",
       "bytes": 3514282,
       "sha256": "261d6a3068270be9cee64c4a130ed603b09b6f7fe421c8b971c38e40484459f4"
     }
   ],
-  "downloaded_at_utc": "2026-09-14T11:13:25+00:00"
+  "downloaded_at_utc": "2026-09-14T21:03:10+00:00"
 }

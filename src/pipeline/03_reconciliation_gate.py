@@ -99,6 +99,7 @@ def main() -> None:
     rtt_path = SILVER_DIR / "rtt" / "rtt_provider.parquet"
     if rtt_path.exists():
         prov = pd.read_parquet(rtt_path)
+        prov = prov[prov.period == "2026-07"]   # the press notice being reconciled against is July 2026
         tot, w18, o52 = prov.total_waiting.sum(), prov.within_18.sum(), prov.over_52.sum()
         rows.append({"check": "D_rtt_vs_press_notice", "sex": "n/a", "metric": "incomplete_pathways_millions",
                      "ons": 7.3, "fingertips": round(tot / 1e6, 2), "diff": round(tot / 1e6 - 7.3, 2),

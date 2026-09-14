@@ -28,16 +28,17 @@ Same measures from the Fingertips API (indicator 94359). `value_note` as served.
 | straddles_icb, straddles_sicbl | true if the MSOA's LSOAs sit in more than one; assignment is by LSOA majority |
 | icb_name_short | "NHS … Integrated Care Board" trimmed |
 
-### `rtt/rtt_provider.parquet` — grain: provider_code (533)
+### `rtt/rtt_provider.parquet` — grain: period × provider_code (528–537 per month)
 | column | meaning |
 |---|---|
+| period | 'YYYY-MM', April–July 2026 |
 | provider_icb_ods/name | Provider Parent Org Code — the provider's ICB |
 | total_waiting | incomplete pathways, sum of all wait bands (= "Total All") |
 | within_18, over_52 | bands 0–18 weeks; bands >52 weeks |
 | pct_within_18, pct_over_52 | recomputed, not published percentages |
 | provider_kind | NHS trust (R-code) / independent sector (N-code) / other |
 
-`rtt/rtt_provider_tfc.parquet` — same at provider × treatment function.
+`rtt/rtt_provider_tfc.parquet` — same at period × provider × treatment function.
 
 ### `catchment/msoa_trust_admissions.parquet` — grain: admission_type × catchment_year × msoa_code × trust_code
 | column | meaning |
@@ -65,3 +66,4 @@ Same measures from the Fingertips API (indicator 94359). `value_note` as served.
 - `02_crosswalk/C_commissioner_codes.csv`.
 - `03_joined/joined_summary.csv`, `msoa_joined.csv`, `trust_catchment_hle_{male,female}.csv`.
 - `04_chart/icb_strip_hle.png`.
+- `05_months/by_month.csv` — per RTT month: England 18-week share, MSOA-level and ICB-level correlations (Pearson, Spearman, admissions-weighted).

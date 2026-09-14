@@ -1,0 +1,18 @@
+{
+  "publisher": "NHS England",
+  "publication_name": "Consultant-led Referral to Treatment Waiting Times Data 2026-27 - May 2026",
+  "published_date": "2026-07-09",
+  "source_page": "https://www.england.nhs.uk/statistics/statistical-work-areas/rtt-waiting-times/rtt-data-2026-27/",
+  "grain": "provider x commissioner x RTT part x treatment function (month = May 2026)",
+  "note": "Provider Parent Org Code is the provider's ICB (ODS code, post April 2026 reorganisation - 36 ICBs). Publication dates for Apr-Jun are the scheduled second-Thursday releases; the July date is confirmed from the press notice.",
+  "files": [
+    {
+      "filename": "Full-CSV-data-file-May26-ZIP-3M-3jBgba.zip",
+      "source_url": "https://www.england.nhs.uk/statistics/wp-content/uploads/sites/2/2026/07/Full-CSV-data-file-May26-ZIP-3M-3jBgba.zip",
+      "description": "Full extract: provider x commissioner x RTT part x treatment function x weekly wait bands (0-104+).",
+      "bytes": 3442357,
+      "sha256": "b99c134c078f3d0e88238b32778ee0c24f96887387e30321ccf5ea78c3fa46eb"
+    }
+  ],
+  "downloaded_at_utc": "2026-09-14T21:03:10+00:00"
+}

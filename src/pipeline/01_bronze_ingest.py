@@ -13,8 +13,10 @@ Sources
           expectancy at birth 2021 Census based", MSOA + England rows via the
           Fingertips API (loaded 2 Sep 2026). The redistribution the article
           is anchored on; reconciled against (1) in Silver.
-3. NHSE - Referral to Treatment, July 2026 full CSV extract (published 10 Sep
-          2026). Provider-level incomplete pathways by treatment function.
+3. NHSE - Referral to Treatment full CSV extracts, April-July 2026. Provider-
+          level incomplete pathways by treatment function. July is the
+          headline month; the earlier three exist to show the Gold result is
+          not a one-month artefact.
 4. ONS  - Open Geography Portal lookups: LSOA21 -> SICBL/ICB/NHSER/LAD (Apr
           2026), OA21 -> LSOA21 -> MSOA21 -> LAD23 (Apr 2023), LAD -> Region
           (Dec 2024).
@@ -32,6 +34,14 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 from _common import BRONZE_DIR, download, sha256_of, write_metadata  # noqa: E402
 
 HUB = "https://hub.arcgis.com/api/v3/datasets/{id}/downloads/data?format=csv&spatialRefId=4326&where=1%3D1"
+
+RTT_MONTHS = [
+    # (slug month, label, published, zip URL) - April-July 2026 so the Gold result can be checked month to month
+    ("2026-04", "April 2026", "2026-06-11", "https://www.england.nhs.uk/statistics/wp-content/uploads/sites/2/2026/06/Full-CSV-data-file-Apr26-ZIP-3M-X7gGnn.zip"),
+    ("2026-05", "May 2026", "2026-07-09", "https://www.england.nhs.uk/statistics/wp-content/uploads/sites/2/2026/07/Full-CSV-data-file-May26-ZIP-3M-3jBgba.zip"),
+    ("2026-06", "June 2026", "2026-08-13", "https://www.england.nhs.uk/statistics/wp-content/uploads/sites/2/2026/08/Full-CSV-data-file-Jun26-ZIP-3M-6jPlxd.zip"),
+    ("2026-07", "July 2026", "2026-09-10", "https://www.england.nhs.uk/statistics/wp-content/uploads/sites/2/2026/09/Full-CSV-data-file-Jul26-ZIP-4M-97ylx5.zip"),
+]
 
 SOURCES = [
     {
@@ -64,20 +74,6 @@ SOURCES = [
         ],
         "grain": "MSOA (2021) x sex; England rows",
         "note": "OHID redistributes the ONS MSOA HSLE release; the Fingertips England row is the figure the article calls 'OHID's published England HLE'.",
-    },
-    {
-        "slug": "nhse_rtt_2026-07",
-        "publisher": "NHS England",
-        "publication_name": "Consultant-led Referral to Treatment Waiting Times Data 2026-27 - July 2026",
-        "published_date": "2026-09-10",
-        "source_page": "https://www.england.nhs.uk/statistics/statistical-work-areas/rtt-waiting-times/rtt-data-2026-27/",
-        "files": [
-            ("Full-CSV-data-file-Jul26.zip",
-             "https://www.england.nhs.uk/statistics/wp-content/uploads/sites/2/2026/09/Full-CSV-data-file-Jul26-ZIP-4M-97ylx5.zip",
-             "Full extract: provider x commissioner x RTT part x treatment function x weekly wait bands (0-104+)."),
-        ],
-        "grain": "provider x commissioner x RTT part x treatment function (month = July 2026)",
-        "note": "Provider Parent Org Code is the provider's ICB (ODS code, post April 2026 reorganisation - 36 ICBs).",
     },
     {
         "slug": "ons_geography_lookups",
@@ -114,6 +110,21 @@ SOURCES = [
         "note": "HES APC, 3-year pooled (FY2021/22-2023/24 for 2023; FY2022/23-2024/25 for 2024). Counts rounded to nearest 5; trusts with <8 admissions from an MSOA suppressed; shares <5% flagged 'not shown'. Acute trusts only (134).",
     },
 ]
+
+
+for _slug, _label, _pub, _url in RTT_MONTHS:
+    SOURCES.append({
+        "slug": f"nhse_rtt_{_slug}",
+        "publisher": "NHS England",
+        "publication_name": f"Consultant-led Referral to Treatment Waiting Times Data 2026-27 - {_label}",
+        "published_date": _pub,
+        "source_page": "https://www.england.nhs.uk/statistics/statistical-work-areas/rtt-waiting-times/rtt-data-2026-27/",
+        "files": [(_url.rsplit("/", 1)[-1], _url,
+                   "Full extract: provider x commissioner x RTT part x treatment function x weekly wait bands (0-104+).")],
+        "grain": f"provider x commissioner x RTT part x treatment function (month = {_label})",
+        "note": "Provider Parent Org Code is the provider's ICB (ODS code, post April 2026 reorganisation - 36 ICBs). "
+                "Publication dates for Apr-Jun are the scheduled second-Thursday releases; the July date is confirmed from the press notice.",
+    })
 
 
 def main() -> None:

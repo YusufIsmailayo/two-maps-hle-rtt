@@ -1,4 +1,5 @@
 route,test,value,verdict
+_,RTT month used,2026-07,
 A_icb_footprint,ICB keys join (RTT parent ODS vs ONS ICB26CDH),36 of 36 both sides,clean at key level
 A_icb_footprint,MSOAs straddling two ICBs (LSOA-level),5,"assigned by LSOA majority, flagged"
 A_icb_footprint,catchment trusts absent from July 2026 RTT provider list,"4 of 134: ['RA9', 'RHQ', 'RK9', 'RVJ']",non-submitters / merged codes - no parent ICB assignable
