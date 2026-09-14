@@ -1,6 +1,7 @@
-requests
-pandas
-pyarrow
-openpyxl
-odfpy
-matplotlib
+# Minimum versions I have run this pipeline against (Python 3.12).
+requests>=2.31
+pandas>=2.2
+pyarrow>=15.0
+openpyxl>=3.1
+odfpy>=1.4
+matplotlib>=3.8

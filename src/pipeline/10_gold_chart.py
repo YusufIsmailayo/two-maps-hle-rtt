@@ -10,7 +10,9 @@ row order (male median) so the eye can compare.
 
 Two rows are annotated with the 18-week RTT share of providers parented by
 that ICB (July 2026) - the top and bottom ICB by HLE - to show how little an
-access figure at ICB level says about a neighbourhood.
+access figure at ICB level says about a neighbourhood. The annotations are
+anchored to the right edge of the axes, not to the data, so no row can push
+them off the canvas.
 """
 
 from __future__ import annotations
@@ -45,11 +47,14 @@ def main() -> None:
     fig, axes = plt.subplots(1, 2, figsize=(14, 12), sharey=True)
     fig.patch.set_facecolor("#fcfcfb")
     rng = np.random.default_rng(7)
+    xlo, xhi = m.hle.min() - 1.5, m.hle.max() + 1.5
     for ax, sex in zip(axes, ["Male", "Female"]):
         d = m[m.sex == sex]
         med = d.groupby("icb_name_short").hle.median()
         lo, hi = med.min(), med.max()
-        ax.axvspan(lo, hi, color=BAND, alpha=0.10, lw=0, zorder=0)
+        ax.axvspan(lo, hi, color=BAND, alpha=0.22, lw=0, zorder=0)
+        for edge in (lo, hi):
+            ax.axvline(edge, color=BAND, lw=1.1, alpha=0.9, zorder=1)
         ax.set_facecolor("#fcfcfb")
         for name, g in d.groupby("icb_name_short"):
             y = ypos[name]
@@ -58,7 +63,7 @@ def main() -> None:
             ax.scatter([med[name]], [y], s=64, color=ACCENT, edgecolor="#fcfcfb", lw=1.2, zorder=4)
         ax.set_yticks(range(len(order)))
         ax.set_yticklabels(order, fontsize=8.5, color=INK2)
-        ax.set_xlim(45, 90)
+        ax.set_xlim(xlo, xhi)
         ax.set_xlabel(f"Healthy life expectancy at birth, {sex.lower()}s, 2019–23 (years)", fontsize=9.5, color=INK2)
         ax.tick_params(axis="x", labelsize=8.5, colors=INK2)
         ax.grid(axis="x", color=GRID, lw=0.8, zorder=1)
@@ -66,15 +71,15 @@ def main() -> None:
             ax.spines[s].set_visible(False)
         ax.spines["bottom"].set_color(GRID)
         ax.tick_params(axis="y", length=0)
-        ax.text(lo + (hi - lo) / 2, len(order) - 0.2, f"spread of the 36 ICB medians: {hi - lo:.1f} yrs",
+        ax.text(lo + (hi - lo) / 2, len(order) + 0.35, f"spread of the 36 ICB medians: {hi - lo:.1f} yrs",
                 ha="center", va="bottom", fontsize=8.5, color=BAND)
-        # annotate top and bottom rows with ICB-level RTT
-        for name in [order[0], order[-1]]:
-            y = ypos[name]
-            x = d[d.icb_name_short == name].hle.max() + 0.6
-            ax.annotate(f"RTT: {rtt[name]:.0%} within 18 wks\n(providers parented by this ICB)",
-                        xy=(x, y), fontsize=7.2, color=INK2, va="center", ha="left", linespacing=1.1)
-    axes[0].set_ylim(-0.8, len(order) + 0.9)
+        # Annotate the best and worst ICB by HLE with their providers' 18-week
+        # share. The labels sit just outside the two extreme rows rather than
+        # on them, so they never cover a median marker or a neighbourhood.
+        for name, dy, va in [(order[-1], 0.62, "bottom"), (order[0], -0.62, "top")]:
+            ax.annotate(f"providers parented by this ICB: {rtt[name]:.0%} within 18 wks",
+                        xy=(xhi - 0.4, ypos[name] + dy), fontsize=7.4, color=INK2, va=va, ha="right")
+    axes[0].set_ylim(-1.5, len(order) + 1.3)
 
     fig.suptitle("Inside every ICB, neighbourhood healthy life expectancy spans more years than separate the best and worst ICB",
                  fontsize=13, color=INK, x=0.01, ha="left", y=0.985)

@@ -59,6 +59,8 @@ Same measures from the Fingertips API (indicator 94359). `value_note` as served.
 - `01_spread/icb_spread_by_sex.csv` — ICB × sex: n_msoa, min/p10/p25/median/p75/p90/max, iqr, range, interdecile, rank.
 - `01_spread/spread_summary.csv` — within vs between, per sex and measure; variance split; ONS-42-ICB benchmark.
 - `01_spread/msoa_hle_icb.parquet` — chart input.
+- `01_spread/lad_spread.csv` — LAD × sex: the same measures one level down, plus `meets_min_msoa` (≥10 MSOAs).
+- `01_spread/lad_spread_summary.csv` — per sex across LADs with ≥10 MSOAs: median/p90/max within-LAD range, the widest LAD and its min–max, median within-LAD IQR, the range of LAD medians, and how many LADs span ≥13 years internally.
 - `02_crosswalk/crosswalk_findings.csv` — routes A–D, each test and result.
 - `02_crosswalk/A_icb_table.csv` — ICB × HLE summary × RTT × leakage.
 - `02_crosswalk/A_icb_resident_leakage.csv`, `A_trust_patient_leakage.csv`.
@@ -66,4 +68,6 @@ Same measures from the Fingertips API (indicator 94359). `value_note` as served.
 - `02_crosswalk/C_commissioner_codes.csv`.
 - `03_joined/joined_summary.csv`, `msoa_joined.csv`, `trust_catchment_hle_{male,female}.csv`.
 - `04_chart/icb_strip_hle.png`.
+- `06_specialty/specialty_18wk.csv` — period × treatment function: pathways, within 18 weeks, over 52 weeks, recomputed shares, and the gap to the 92% standard in percentage points.
+- `06_specialty/specialty_headline.csv` — the headline month, worst-performing first, with the England total appended as a final row.
 - `05_months/by_month.csv` — per RTT month: England 18-week share, MSOA-level and ICB-level correlations (Pearson, Spearman, admissions-weighted).

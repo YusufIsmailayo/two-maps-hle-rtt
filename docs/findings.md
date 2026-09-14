@@ -47,6 +47,15 @@ trust fails to submit.
 | ICBs whose internal IQR > IQR of medians | 36 of 36 | 36 of 36 |
 | Share of MSOA HLE variance that is within-ICB | 81.6% | 80.7% |
 
+One level down, the same thing is true of the geography readers actually
+recognise (`data/gold/01_spread/lad_spread_summary.csv`). Across the 277
+local authorities with at least ten MSOAs, the median internal HLE range is
+**13.3 years for men, 13.6 for women**; 144 of those LADs span 13 years or
+more between their best and worst neighbourhood. The widest is Wirral: 47.8
+to 73.2 for men, a 25.4-year gap inside one council area. This is the
+figure behind the article's opening — two people twenty minutes apart is a
+within-LAD comparison, not a national percentile gap.
+
 Robustness: against ONS's own ICB-level HLE on the pre-April-2026 42 ICBs
 (an independent between-ICB benchmark, range 8.6 / 9.5), the result is the
 same. Top ICB by median: Thames Valley (69.5 / 71.3); bottom: Birmingham &
@@ -104,6 +113,16 @@ stronger sense than a missing crosswalk. Where you live sets your healthy
 years within a 20-year band that no provider figure explains; where you
 are treated sets your wait within a 34-point band that has nothing to do
 with the healthy years of the people waiting.
+
+## Context: the specialty spread (`data/gold/06_specialty/`)
+
+Not evidence for the thesis, but the reason a single national 18-week figure
+is worth interrogating. In July 2026 **no treatment function met the 92%
+standard**. Oral surgery was furthest from it at 54.2% within 18 weeks — 37.8
+percentage points short — followed by ENT (57.6%) and plastic surgery
+(59.5%). The best-performing, elderly medicine, still only reached 83.8%.
+Every share is rebuilt from the weekly wait bands, and the specialties
+reconcile to the provider-level England total for each month.
 
 ## What the data cannot say
 

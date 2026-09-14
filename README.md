@@ -50,6 +50,7 @@ src/pipeline/
   09_gold_joined.py            what the join says once you make it
   10_gold_chart.py             the strip chart
   11_gold_months.py            the RTT-dependent results repeated for each of the four months
+  12_gold_specialty.py         the national 18-week picture by treatment function
 ```
 
 Run in order: `for f in src/pipeline/0*.py src/pipeline/1*.py; do python3 $f || break; done` — or follow the three notebooks in `notebooks/` (`01_bronze`, `02_silver`, `03_gold`), which run the same steps and inspect what each produced.
@@ -59,11 +60,35 @@ Run in order: `for f in src/pipeline/0*.py src/pipeline/1*.py; do python3 $f || 
 - 6,856 English MSOAs; 36 ICBs (post-April-2026); 533 RTT providers of which 151 NHS trusts; 134 acute trusts in the catchment file.
 - Spread of the 36 ICB medians: **9.2 years (male), 10.0 (female)**. Median within-ICB range: **20.3 / 20.5 years**. Narrowest ICB (Cornwall): 14.2 / 15.6. **All 36 ICBs** have an internal range, interdecile range *and* IQR wider than the corresponding between-ICB measure. 81–82% of MSOA HLE variance is within ICBs.
 - A residence → trust crosswalk exists (OHID catchment file). The dominant trust takes a median **76%** of a neighbourhood's elective admissions (p10 52%, p90 91%); for 8.1% of MSOAs it takes under half. Using it as if it were clean changes a neighbourhood's 18-week figure by a median 0.8 pp, p90 3.0 pp, max 12.8 pp.
+- Within a single **local authority** — the geography that matches "twenty minutes apart" — the median HLE range is **13.3 years (male) / 13.6 (female)** across the 277 LADs with at least ten MSOAs. 144 of them span 13 years or more internally. Widest: Wirral, 47.8 to 73.2 (male).
+- No treatment function meets the 92% standard. Oral surgery is furthest from it: **54.2%** within 18 weeks in July 2026, 37.8 pp short (`data/gold/06_specialty/`).
 - 7.1% of the national waiting list sits at providers with no residence footprint at all (403 of 533 providers, mostly independent sector). 228 MSOAs' dominant trust did not submit RTT data for July 2026.
 - ICB footprints leak: **14.0%** of elective acute admissions are treated by a trust parented by a different ICB from the patient's; Staffordshire and Stoke-on-Trent 47%.
 - Once joined, MSOA HLE and the dominant trust's 18-week share are uncorrelated: **r = −0.008 (male), −0.006 (female)** in July 2026; Spearman likewise. Across April–July 2026 the Pearson r never leaves the range −0.021 to −0.006 (`data/gold/05_months/by_month.csv`). Trusts in the worst-waiting quartile serve neighbourhoods with median HLE 65.8 (M) vs 65.0 for the best-waiting quartile.
 
 ![ICB strip chart](data/gold/04_chart/icb_strip_hle.png)
+
+## Re-running this
+
+`pip install -r requirements.txt`, then the run line above. Bronze is not in
+git — the raw payloads are re-downloaded from the URLs in each
+`metadata.json`, and the recorded SHA-256 tells you whether you got the same
+bytes I did.
+
+One caveat on that: NHS England publishes each month's RTT extract at a URL
+with a random suffix (`…Full-CSV-data-file-Jul26-ZIP-4M-97ylx5.zip`), and
+those links are rotated and retired. If Bronze ingest 404s on the RTT
+sources, the file has moved rather than vanished — find the month's extract
+on the NHS England RTT statistics page and update the URL in
+`01_bronze_ingest.py`. The hash in `metadata.json` still tells you whether
+the replacement is the same file.
+
+## Licensing
+
+Code: MIT (`LICENSE`). Data: all five sources are Crown copyright, published
+under the [Open Government Licence v3](https://www.nationalarchives.gov.uk/doc/open-government-licence/version/3/);
+the Gold tables committed here are derived from them under the same terms
+and should be attributed to ONS, OHID and NHS England as listed above.
 
 ## Guardrails
 

@@ -14,6 +14,12 @@ Outputs (data/gold/01_spread/):
                           share of ICBs whose internal range exceeds the
                           between-ICB range; within/between variance split.
   msoa_hle_icb.parquet    the MSOA x sex rows with ICB attached (chart input).
+  lad_spread.csv          the same spread measures one level down, per local
+                          authority x sex - the geography a reader actually
+                          recognises as "twenty minutes apart".
+  lad_spread_summary.csv  headline within-LAD spread across LADs with at least
+                          ten MSOAs, so the opening claim rests on a measured
+                          figure rather than a national percentile gap.
 
 ICB HLE "median" here is the median of constituent MSOA HLEs - a summary of
 neighbourhood values, not an ICB life table. ONS publishes its own ICB HLE
@@ -37,6 +43,56 @@ OUT.mkdir(parents=True, exist_ok=True)
 
 def q(s: pd.Series, p: float) -> float:
     return float(s.quantile(p))
+
+
+def lad_spread(df: pd.DataFrame, min_msoa: int = 10) -> None:
+    """Within-local-authority HLE spread.
+
+    An ICB is an administrative footprint most people have never heard of; a
+    council area is the unit that matches "twenty minutes apart by car". I
+    compute the same measures per LAD, and summarise across the LADs big
+    enough for a range to mean anything (>= min_msoa MSOAs), so the article's
+    opening image can cite a number instead of a national percentile gap.
+    """
+    rows, summary = [], []
+    for sex, d in df.dropna(subset=["hle"]).groupby("sex"):
+        g = d.groupby("lad_name").hle
+        lad = pd.DataFrame({
+            "n_msoa": g.size(), "min": g.min(), "p10": g.quantile(.10), "p25": g.quantile(.25),
+            "median": g.median(), "p75": g.quantile(.75), "p90": g.quantile(.90), "max": g.max(),
+        }).reset_index()
+        lad["iqr"] = lad.p75 - lad.p25
+        lad["range"] = lad["max"] - lad["min"]
+        lad["interdecile"] = lad.p90 - lad.p10
+        lad["sex"] = sex
+        lad["meets_min_msoa"] = lad.n_msoa >= min_msoa
+        rows.append(lad.sort_values("range", ascending=False))
+
+        big = lad[lad.meets_min_msoa]
+        # The between-LAD comparison is the distribution of LAD medians, same
+        # logic as the ICB test one level up.
+        med = big["median"]
+        widest = big.loc[big["range"].idxmax()]
+        summary.append({
+            "sex": sex, "min_msoa": min_msoa, "n_lad": len(big),
+            "within_lad_range_median": big["range"].median(),
+            "within_lad_range_p90": q(big["range"], .90),
+            "within_lad_range_max": big["range"].max(),
+            "widest_lad": widest.lad_name, "widest_lad_min": widest["min"], "widest_lad_max": widest["max"],
+            "within_lad_iqr_median": big.iqr.median(),
+            "between_lad_medians_range": med.max() - med.min(),
+            "n_lad_range_ge_13": int((big["range"] >= 13).sum()),
+            "n_lad_within_exceeds_between": int((big["range"] > (med.max() - med.min())).sum()),
+        })
+
+    pd.concat(rows, ignore_index=True).round(2).to_csv(OUT / "lad_spread.csv", index=False)
+    summ = pd.DataFrame(summary).round(2)
+    summ.to_csv(OUT / "lad_spread_summary.csv", index=False)
+    for _, r in summ.iterrows():
+        print(f"{r.sex}: within-LAD HLE range across {int(r.n_lad)} LADs with >={min_msoa} MSOAs - "
+              f"median {r.within_lad_range_median:.1f} yrs, max {r.within_lad_range_max:.1f} "
+              f"({r.widest_lad}, {r.widest_lad_min:.1f}-{r.widest_lad_max:.1f}); "
+              f"{int(r.n_lad_range_ge_13)} LADs span >= 13 yrs internally")
 
 
 def main() -> None:
@@ -112,6 +168,8 @@ def main() -> None:
               f"bottom {i['median'].min():.1f} ({i.loc[i['median'].idxmin(), 'icb_name_short']}); "
               f"narrowest within-ICB range {i['range'].min():.1f} ({i.loc[i['range'].idxmin(), 'icb_name_short']}), "
               f"widest {i['range'].max():.1f} ({i.loc[i['range'].idxmax(), 'icb_name_short']})")
+    print()
+    lad_spread(df)
 
 
 if __name__ == "__main__":
