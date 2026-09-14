@@ -68,7 +68,7 @@ The reply I expected to this piece was: you don't need a neighbourhood-to-hospit
 
 Two things happen when you do [02_crosswalk/A_icb_table.csv].
 
-The first is leakage. Fourteen per cent of elective admissions in England are treated by a trust whose parent ICB is not the patient's. In Staffordshire and Stoke-on-Trent it is 47% — half the county's elective care is at Burton, Wolverhampton and Birmingham, none of which report to Staffordshire. Frimley Health draws four-fifths of its patients from outside the ICB it belongs to.
+The first is leakage. Fourteen per cent of elective admissions in England are treated by a trust whose parent ICB is not the patient's. In Staffordshire and Stoke-on-Trent, 47% of residents' acute admissions are to trusts outside its ICB — Burton, Wolverhampton, Birmingham — none of which report to Staffordshire. Frimley Health draws four-fifths of its patients from outside the ICB it belongs to.
 
 The second is the chart.
 
