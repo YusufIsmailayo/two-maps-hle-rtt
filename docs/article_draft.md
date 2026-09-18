@@ -1,13 +1,18 @@
 <!--
-DRAFT v3 — 18 Sep 2026, revised after an independent audit of the pushed repo. Every figure below is in data/gold/ (file named in
-[brackets] on first use; strip the brackets before publishing). Nothing is
-estimated in prose.
+DRAFT v5 — 18 Sep 2026. PRE-PUBLICATION CHECKLIST:
+  1. Delete this whole comment block.
+  2. Strip every [bracketed/file.csv] source tag — search for "[0" — there are
+     about a dozen. They exist so each figure can be checked against the repo.
+  3. Insert data/gold/04_chart/icb_strip_hle.png at the [CHART] marker.
 
-Audit corrections carried into this version: RTT figures are now the published
-provider measure (NONC rows excluded); the Bristol merger is no longer read as
-a non-submission; the opening distinguishes a council's range from a typical
-pair; the quartile comparison names which statistic it uses; the correlation
-band is stated correctly; and the CI robustness check is reported.
+Three different statistics about the same thing, deliberately kept distinct:
+  ~25 years — the gap between the two ends of Wirral, a real named pair
+  13.3 years — the typical English council's full internal range
+  ~4 years  — the difference between two neighbourhoods picked at random
+              inside the same council
+The opening leads on the first, the second paragraph gives the second, and the
+third corrects for the fact that the first two are extremes. Do not let an
+edit collapse them into one number.
 
 Title: settled on the paradox mode. The original — "Refuse to Line Up" — is
 not true of what the data showed, and writing around it would have been the
@@ -28,7 +33,7 @@ Those are real neighbourhoods and I can name them: Wirral 028 and Wirral 016 [01
 
 Wirral is the widest council in England on this measure. It is not a freak. Of the 277 English local authorities large enough to measure, the typical one spans 13.3 years of healthy life between its best neighbourhood and its worst, and 144 of them span thirteen years or more [01_spread/lad_spread_summary.csv].
 
-Pick two neighbourhoods in the same council at random, though, and they differ by about four years, not thirteen. The wide pair is real, and it sits inside most councils in England — but you have to go looking for the ends of the range to find it. You do not need to cross a county. You need to know which bus.
+Pick two neighbourhoods in the same council at random, though, and they differ by about four years — not thirteen, and nothing like twenty-five. The wide pair is real, and it sits inside most councils in England — but you have to go looking for the ends of the range to find it. You do not need to cross a county. You need to know which bus.
 
 ## What was published on 2 September
 
@@ -61,7 +66,7 @@ It is a crosswalk. It is not a clean one, and the pipeline measures how unclean 
 - It is built on admissions, not on referrals. Change from all admissions to elective ones and 126 neighbourhoods change their main hospital.
 - And it is only as good as the month's return. Sheffield Teaching Hospitals and Torbay are absent from every month I pulled; Plymouth stopped in July. That leaves 167 neighbourhoods with a main hospital and no figure for it.
 
-I used it anyway, because the honest alternative — declaring the join impossible — would have been wrong. Every neighbourhood got its dominant trust's 18-week share, and, as a check, an average across all the trusts it uses weighted by how many of its residents go to each. Using the dominant trust rather than that weighted alternative changes a neighbourhood's figure by less than a point in the typical case, three points at the ninetieth percentile, thirteen at the very worst.
+I used it anyway, because the honest alternative — declaring the join impossible — would have been wrong. Every neighbourhood got its dominant trust's 18-week share, and, as a check, an average across all the trusts it uses weighted by how many of its residents go to each. Using the dominant trust rather than that weighted alternative changes a neighbourhood's figure by less than a point in the typical case, three points at the ninetieth percentile, thirteen points at the very worst.
 
 Then I ran the correlation.
 
@@ -71,7 +76,7 @@ The correlation between a neighbourhood's healthy life expectancy and the 18-wee
 
 Before going further: healthy life expectancy here describes 2019 to 2023 and the waiting figures describe 2026. What this tests is whether places with different historical health profiles are currently served by providers with systematically different waiting performance. It is not a test of whether waiting harms health, and nothing below should be read as one.
 
-In plain terms: the hospital serving England's healthiest neighbourhoods and the hospital serving its least healthy are, on waiting times, indistinguishable from each other.
+In plain terms, and measured rather than inferred — a correlation of zero doesn't by itself tell you the extremes behave: take England's tenth of neighbourhoods with the lowest healthy life expectancy and its healthiest tenth, and the hospitals they mostly use sit 0.9 percentage points apart on eighteen-week performance, 64.0% against 64.9% [03_joined/joined_summary.csv]. Across all trusts the spread is thirty-four points.
 
 You can come at it from the other direction and get the same answer. Take the quarter of main hospitals with the worst 18-week performance and the quarter doing best, and compare the neighbourhoods behind them. Pool those neighbourhoods and the median healthy life expectancy for men is 65.0 years for the worst-waiting group against 65.2 for the best — 1,890 neighbourhoods against 1,352 [03_joined/joined_summary.csv]. Count each hospital once instead, taking the median of their catchment medians, and it comes out 65.8 against 65.1, tilted the other way. Two defensible statistics, two-tenths and seven-tenths of a year apart, pointing in opposite directions. Against a twenty-year spread inside a single ICB, neither is a gradient.
 
@@ -131,7 +136,7 @@ I'd rather say that plainly than quietly reissue the numbers. A pipeline full of
 
 ---
 
-The two people from the opening are still in the same borough. Their neighbourhoods are twenty-five years apart in healthy life, and the waiting-time performance of the hospitals serving them does not explain that gap — not in this analysis, at this grain, across these months.
+The two people from the opening are still in the same borough. Their neighbourhoods are twenty-five years apart in healthy life. Nothing in this analysis shows that gap tracking the waiting-time performance of the hospitals serving them — not at this grain, not across these months.
 
 Neither map is wrong. They are answers to different questions, measured over different periods, on geographies built for different purposes. The mistake would be treating them as one.
 

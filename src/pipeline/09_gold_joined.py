@@ -80,6 +80,18 @@ def main() -> None:
         # hears when you say "the neighbourhoods they serve".
         rows.append({"sex": sex, "measure": "MEDIAN OF TRUST MEDIANS, catchment HLE: worst-quartile-waiting vs best-quartile (years)",
                      "value": f"{lo.hle_median.median():.1f} vs {hi.hle_median.median():.1f}", "n": len(lo)})
+        # A reader needs one plain-English translation of a near-zero
+        # correlation, and the correlation itself does not license one: r can
+        # sit at zero while the extremes differ wildly. So I measure the
+        # extremes directly - the decile of neighbourhoods with the lowest HLE
+        # against the decile with the highest, compared on the 18-week share of
+        # the trust each mostly uses.
+        dec_lo = j[j[col] <= j[col].quantile(.10)]
+        dec_hi = j[j[col] >= j[col].quantile(.90)]
+        rows.append({"sex": sex, "measure": "dominant trust's 18wk%: bottom vs top HLE DECILE of neighbourhoods",
+                     "value": f"{dec_lo.pct_within_18.median():.1%} vs {dec_hi.pct_within_18.median():.1%} "
+                              f"({abs(dec_lo.pct_within_18.median() - dec_hi.pct_within_18.median()) * 100:.1f} pp apart)",
+                     "n": f"{len(dec_lo)} vs {len(dec_hi)} MSOAs"})
         pooled_lo = j[j.trust_code.isin(lo.trust_code)][col]
         pooled_hi = j[j.trust_code.isin(hi.trust_code)][col]
         rows.append({"sex": sex, "measure": "POOLED MSOA median HLE: worst-quartile-waiting vs best-quartile (years)",
