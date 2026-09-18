@@ -1,21 +1,23 @@
 sex,measure,value,n
-Male,pearson r: MSOA HLE vs FPTP trust 18wk%,-0.008,6627
-Male,spearman rho: MSOA HLE vs FPTP trust 18wk%,0.003,6627
-Male,pearson r: MSOA HLE vs admissions-weighted 18wk%,-0.006,6854
-Male,share of MSOA HLE variance that is WITHIN FPTP-trust catchments,0.739,114
-Male,"median within-trust-catchment HLE range (trusts with >=10 MSOAs), years",16.7,114
-Male,"median within-trust-catchment HLE IQR (trusts with >=10 MSOAs), years",6.0,114
-Male,"range of trust-catchment HLE medians, years",13.5,114
-Male,range of FPTP trusts' 18wk% (pp),34.1,114
-Male,IQR of FPTP trusts' 18wk% (pp),7.1,114
-Male,median catchment HLE: worst-quartile-waiting trusts vs best-quartile (years),65.8 vs 65.0,28
-Female,pearson r: MSOA HLE vs FPTP trust 18wk%,-0.006,6628
-Female,spearman rho: MSOA HLE vs FPTP trust 18wk%,0.006,6628
-Female,pearson r: MSOA HLE vs admissions-weighted 18wk%,-0.006,6855
-Female,share of MSOA HLE variance that is WITHIN FPTP-trust catchments,0.726,114
-Female,"median within-trust-catchment HLE range (trusts with >=10 MSOAs), years",17.4,114
-Female,"median within-trust-catchment HLE IQR (trusts with >=10 MSOAs), years",6.1,114
-Female,"range of trust-catchment HLE medians, years",14.5,114
-Female,range of FPTP trusts' 18wk% (pp),34.1,114
-Female,IQR of FPTP trusts' 18wk% (pp),7.1,114
-Female,median catchment HLE: worst-quartile-waiting trusts vs best-quartile (years),66.8 vs 66.6,28
+Male,pearson r: MSOA HLE vs FPTP trust 18wk%,-0.004,6688
+Male,spearman rho: MSOA HLE vs FPTP trust 18wk%,0.007,6688
+Male,pearson r: MSOA HLE vs admissions-weighted 18wk%,-0.004,6854
+Male,share of MSOA HLE variance that is WITHIN FPTP-trust catchments,0.741,114
+Male,"median within-trust-catchment HLE range (trusts with >=10 MSOAs), years",16.7,115
+Male,"median within-trust-catchment HLE IQR (trusts with >=10 MSOAs), years",6.0,115
+Male,"range of trust-catchment HLE medians, years",13.5,115
+Male,range of FPTP trusts' 18wk% (pp),34.1,115
+Male,IQR of FPTP trusts' 18wk% (pp),7.1,115
+Male,"MEDIAN OF TRUST MEDIANS, catchment HLE: worst-quartile-waiting vs best-quartile (years)",65.8 vs 65.1,28
+Male,POOLED MSOA median HLE: worst-quartile-waiting vs best-quartile (years),65.0 vs 65.2,1890 vs 1352 MSOAs
+Female,pearson r: MSOA HLE vs FPTP trust 18wk%,-0.002,6689
+Female,spearman rho: MSOA HLE vs FPTP trust 18wk%,0.01,6689
+Female,pearson r: MSOA HLE vs admissions-weighted 18wk%,-0.004,6855
+Female,share of MSOA HLE variance that is WITHIN FPTP-trust catchments,0.727,114
+Female,"median within-trust-catchment HLE range (trusts with >=10 MSOAs), years",17.4,115
+Female,"median within-trust-catchment HLE IQR (trusts with >=10 MSOAs), years",6.1,115
+Female,"range of trust-catchment HLE medians, years",14.5,115
+Female,range of FPTP trusts' 18wk% (pp),34.1,115
+Female,IQR of FPTP trusts' 18wk% (pp),7.1,115
+Female,"MEDIAN OF TRUST MEDIANS, catchment HLE: worst-quartile-waiting vs best-quartile (years)",66.8 vs 67.2,28
+Female,POOLED MSOA median HLE: worst-quartile-waiting vs best-quartile (years),66.2 vs 66.9,1890 vs 1352 MSOAs

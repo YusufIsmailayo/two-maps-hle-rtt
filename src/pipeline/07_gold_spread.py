@@ -32,6 +32,7 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
+import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
@@ -69,6 +70,17 @@ def lad_spread(df: pd.DataFrame, min_msoa: int = 10) -> None:
         rows.append(lad.sort_values("range", ascending=False))
 
         big = lad[lad.meets_min_msoa]
+        # The range is a distance between a council's two EXTREME neighbourhoods.
+        # It is not what two neighbourhoods a short drive apart typically differ
+        # by, and the first draft of the article confused the two. So I also
+        # compute the median absolute difference over every pair of MSOAs inside
+        # the same council - the honest answer to "pick two neighbourhoods here".
+        pairs = []
+        for _, g in d[d.lad_name.isin(big.lad_name)].groupby("lad_name"):
+            v = g.hle.to_numpy()
+            diff = np.abs(v[:, None] - v[None, :])
+            pairs.append(diff[np.triu_indices(len(v), 1)])
+        pairs = np.concatenate(pairs)
         # The between-LAD comparison is the distribution of LAD medians, same
         # logic as the ICB test one level up.
         med = big["median"]
@@ -82,6 +94,10 @@ def lad_spread(df: pd.DataFrame, min_msoa: int = 10) -> None:
             "within_lad_iqr_median": big.iqr.median(),
             "between_lad_medians_range": med.max() - med.min(),
             "n_lad_range_ge_13": int((big["range"] >= 13).sum()),
+            "within_lad_pairwise_median": float(np.median(pairs)),
+            "within_lad_pairwise_p90": float(np.percentile(pairs, 90)),
+            "within_lad_pairwise_share_ge_13": float((pairs >= 13).mean()),
+            "n_pairs": len(pairs),
             "n_lad_within_exceeds_between": int((big["range"] > (med.max() - med.min())).sum()),
         })
 
@@ -93,6 +109,9 @@ def lad_spread(df: pd.DataFrame, min_msoa: int = 10) -> None:
               f"median {r.within_lad_range_median:.1f} yrs, max {r.within_lad_range_max:.1f} "
               f"({r.widest_lad}, {r.widest_lad_min:.1f}-{r.widest_lad_max:.1f}); "
               f"{int(r.n_lad_range_ge_13)} LADs span >= 13 yrs internally")
+        print(f"{r.sex}: but two MSOAs picked at random inside the same council differ by a median "
+              f"{r.within_lad_pairwise_median:.1f} yrs (p90 {r.within_lad_pairwise_p90:.1f}); only "
+              f"{r.within_lad_pairwise_share_ge_13:.1%} of within-council pairs differ by 13+ years")
 
 
 def main() -> None:

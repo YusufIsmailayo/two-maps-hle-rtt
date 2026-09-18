@@ -31,6 +31,11 @@ from _common import GOLD_DIR, SILVER_DIR  # noqa: E402
 OUT = GOLD_DIR / "00_reconciliation"
 OUT.mkdir(parents=True, exist_ok=True)
 
+#: NHS England, Incomplete-Provider-Jul26 workbook: incomplete pathways across
+#: all providers, excluding rows with no identified commissioner. The CSV
+#: extract totals 7,162,692 before that exclusion.
+WORKBOOK_TOTAL = 7_131_685
+
 BULLETIN = {
     "Male":   {"median": 65.3, "iqr": 7.4, "p10": 57.7, "p90": 71.0, "interdecile": 13.4},
     "Female": {"median": 66.8, "iqr": 7.8, "p10": 58.6, "p90": 72.6, "interdecile": 14.0},
@@ -97,25 +102,39 @@ def main() -> None:
     # published extract does not, so totals must sit just below the SPN and
     # the 18-week share within a few tenths of a point.
     rtt_path = SILVER_DIR / "rtt" / "rtt_provider.parquet"
-    if rtt_path.exists():
+    if not rtt_path.exists():
+        # This check used to skip silently when RTT Silver had not been built,
+        # which on a clean clone is always - the gate runs at step 03 and RTT
+        # Silver is written at step 05. A gate that quietly drops a check is
+        # worse than no gate, so it now says so, and `main` exits non-zero.
+        print("RTT Silver not built yet: check D SKIPPED. Re-run this gate after 05_silver_rtt.py.")
+        rtt_checked = False
+    else:
+        rtt_checked = True
         prov = pd.read_parquet(rtt_path)
         prov = prov[prov.period == "2026-07"]   # the press notice being reconciled against is July 2026
         tot, w18, o52 = prov.total_waiting.sum(), prov.within_18.sum(), prov.over_52.sum()
-        rows.append({"check": "D_rtt_vs_press_notice", "sex": "n/a", "metric": "incomplete_pathways_millions",
-                     "ons": 7.3, "fingertips": round(tot / 1e6, 2), "diff": round(tot / 1e6 - 7.3, 2),
-                     "pass": 7.0 <= tot / 1e6 <= 7.3, "note": "SPN includes estimates for 4 non-reporting providers; extract does not"})
+        # D1 is now an EXACT reconciliation against NHS England's published
+        # provider workbook, not a tolerance against the press notice. This is
+        # the check that would have caught the NONC rows on day one.
+        rows.append({"check": "D_rtt_vs_published_workbook", "sex": "n/a", "metric": "incomplete_pathways",
+                     "ons": WORKBOOK_TOTAL, "fingertips": int(tot), "diff": int(tot - WORKBOOK_TOTAL),
+                     "pass": int(tot) == WORKBOOK_TOTAL,
+                     "note": "Incomplete-Provider-Jul26 workbook; exact match required"})
         rows.append({"check": "D_rtt_vs_press_notice", "sex": "n/a", "metric": "pct_within_18_weeks",
                      "ons": 65.4, "fingertips": round(100 * w18 / tot, 1), "diff": round(100 * w18 / tot - 65.4, 1),
-                     "pass": abs(100 * w18 / tot - 65.4) < 0.5, "note": "'ons' column = NHS England SPN"})
+                     "pass": abs(100 * w18 / tot - 65.4) < 0.5, "note": "SPN adds estimates for non-submitters"})
         rows.append({"check": "D_rtt_vs_press_notice", "sex": "n/a", "metric": "over_52_weeks",
                      "ons": 111379, "fingertips": int(o52), "diff": int(o52 - 111379),
-                     "pass": abs(o52 - 111379) / 111379 < 0.01, "note": "'ons' column = NHS England SPN"})
+                     "pass": 100_000 <= o52 <= 111_379,
+                     "note": "must sit BELOW the SPN: the SPN estimates the three non-submitting acute trusts and Cora Health MSK"})
 
     res = pd.DataFrame(rows)
     res.to_csv(OUT / "reconciliation.csv", index=False)
     print(res.to_string(index=False))
-    print("\nGATE:", "PASS" if res["pass"].all() else "FAIL")
-    if not res["pass"].all():
+    ok = bool(res["pass"].all()) and rtt_checked
+    print("\nGATE:", "PASS" if ok else "FAIL")
+    if not ok:
         sys.exit(1)
 
 

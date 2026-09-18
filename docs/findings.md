@@ -2,6 +2,13 @@
 
 Every number here is in `data/gold/`. Nothing below is estimated.
 
+> **Revised after audit.** An independent audit of the first published commit
+> found two pipeline defects — unidentified-commissioner (`NONC`) rows retained
+> in the RTT rollup, and the North Bristol/Bristol trust merger read as a
+> non-submission — plus three places where this document described a statistic
+> it was not actually computing. All are corrected below and in the code; the
+> README records what changed. The three claims are unaffected in substance.
+
 ## Claim 1 — "There is no clean MSOA-of-residence → treatment-provider crosswalk"
 
 **False as stated; true in a more precise form.**
@@ -19,7 +26,7 @@ how unclean (`data/gold/02_crosswalk/crosswalk_findings.csv`):
 | Route | What it is | What breaks |
 |---|---|---|
 | **A. ICB footprint** | MSOA → LSOA → ICB (Apr 2026); provider → parent ICB (RTT file) | Keys join 36/36. But 14.0% of elective admissions are treated by a trust parented by a different ICB (all admissions 13.1%); resident-view leakage median 13.8%, max 47.0% (Staffordshire & Stoke — Burton, Wolverhampton, UHB). 22 of 130 trusts take >25% of patients from outside their parent ICB; Frimley 80%, Royal Marsden 82%. Five MSOAs straddle two ICBs. |
-| **B. First past the post** | MSOA → dominant elective trust → RTT provider | Dominant trust takes median 76% of elective admissions (p10 52%, p90 91%); 556 MSOAs (8.1%) under half. 126 MSOAs change dominant trust between elective and all-admissions. 228 MSOAs' dominant trust (Sheffield, Torbay, Plymouth, North Bristol) submitted no RTT data for July 2026. 7.1% of the national waiting list is at 403 providers with no residence footprint (ISPs 325k pathways, other non-trust 117k, non-acute NHS 70k). Treating the join as clean changes the MSOA's 18-week figure by median 0.8 pp, p90 3.0 pp, max 12.8 pp. |
+| **B. First past the post** | MSOA → dominant elective trust → RTT provider | Dominant trust takes median 76% of elective admissions (p10 52%, p90 91%); 556 MSOAs (8.1%) under half. 126 MSOAs change dominant trust between elective and all-admissions. 167 MSOAs' dominant trust (Sheffield, Torbay, Plymouth) submitted no RTT data for July 2026. 7.2% of the national waiting list is at 403 providers with no residence footprint (ISPs 325k pathways, other non-trust 117k, non-acute NHS 70k). Treating the join as clean changes the MSOA's 18-week figure by median 0.8 pp, p90 3.0 pp, max 12.8 pp. |
 | **C. Commissioner** | MSOA → LSOA → Sub-ICB location → RTT commissioner | 106 of 121 commissioner codes are SICBLs; 1.7% of pathways have a non-SICBL commissioner (specialised commissioning). 22 MSOAs straddle two SICBLs. The deeper problem: a SICBL is a GP-registered population (~500k), not a residence, and it records who pays, not where you are treated. |
 | **D. Trust address** | trust HQ LSOA → MSOA | 131 MSOAs contain a trust HQ. A point, not a population. The naive spatial join. |
 
@@ -52,9 +59,33 @@ recognise (`data/gold/01_spread/lad_spread_summary.csv`). Across the 277
 local authorities with at least ten MSOAs, the median internal HLE range is
 **13.3 years for men, 13.6 for women**; 144 of those LADs span 13 years or
 more between their best and worst neighbourhood. The widest is Wirral: 47.8
-to 73.2 for men, a 25.4-year gap inside one council area. This is the
-figure behind the article's opening — two people twenty minutes apart is a
-within-LAD comparison, not a national percentile gap.
+to 73.2 for men, a 25.4-year gap inside one council area.
+
+**That range is a distance between extremes, and the first draft used it as
+though it were a typical comparison.** Two neighbourhoods picked at random
+inside the same council differ by a median of **3.8 years for men, 4.0 for
+women** (p90 10.1 / 10.6), and only **4.0% / 5.0%** of within-council pairs
+differ by 13 years or more. Both figures now sit in the same file. The
+article's opening has to say which one it means: thirteen years apart is a
+real pair of neighbourhoods in most councils, but it is not the average
+pair.
+
+**Does the ICB finding survive the uncertainty?**
+(`data/gold/07_ci_robustness/ci_robustness.csv`.) The MSOA estimates carry
+95% intervals with a median width of 2.9 years, and the chart plots points.
+So: take each ICB's healthiest neighbourhood at its *lower* bound and its
+least healthy at its *upper* bound — shrinking every internal range by about
+two interval widths — and compare with the between-ICB median spread.
+**All 36 ICBs still exceed it**, minimum 10.7 (M) / 11.6 (F) against 9.2 /
+10.0. The headline claim holds under a deliberately hostile test.
+
+Two honest qualifications. This is a fixed-extremes check on individual
+intervals, not a simultaneous confidence band over all 6,856 neighbourhoods.
+And it is not symmetric: the between-ICB side stays on point estimates, so
+the penalty falls only on the within-ICB side. Applying the same shrinkage
+to the interdecile instead of the range leaves only 14 of 36 (M) and 13 of
+36 (F) — that measure does not survive, and it is recorded rather than
+dropped.
 
 Robustness: against ONS's own ICB-level HLE on the pre-April-2026 42 ICBs
 (an independent between-ICB benchmark, range 8.6 / 9.5), the result is the
@@ -90,20 +121,21 @@ feasible enough to try, so the pipeline tries it: every MSOA gets its
 dominant elective trust's 18-week share, and an admissions-weighted share
 across all the trusts it uses.
 
-- Pearson r, MSOA HLE vs dominant trust's 18-week share: **−0.008 (M), −0.006 (F)** for July 2026. Spearman: 0.003 / 0.006. Weighted: −0.006 / −0.006. n ≈ 6,600.
+- Pearson r, MSOA HLE vs dominant trust's 18-week share: **−0.004 (M), −0.002 (F)** for July 2026, n = 6,689. Spearman: +0.007 / +0.010 — marginally positive, and near enough zero that the sign is not worth reading. Admissions-weighted: −0.004 / −0.004.
 - Not a one-month artefact (`data/gold/05_months/by_month.csv`):
 
   | month | England ≤18 wks | MSOAs with an RTT figure | r (M) | r (F) | ICB-level r (M) | ICB-level r (F) |
   |---|---|---|---|---|---|---|
-  | Apr 2026 | 64.9% | 6,748 | −0.021 | −0.017 | −0.17 | −0.13 |
-  | May 2026 | 65.5% | 6,748 | −0.019 | −0.015 | −0.17 | −0.13 |
-  | Jun 2026 | 65.8% | 6,748 | −0.017 | −0.014 | −0.21 | −0.17 |
-  | Jul 2026 | 65.3% | 6,628 | −0.008 | −0.006 | −0.18 | −0.14 |
+  | Apr 2026 | 65.0% | 6,748 | −0.020 | −0.016 | −0.15 | −0.11 |
+  | May 2026 | 65.6% | 6,748 | −0.019 | −0.015 | −0.15 | −0.11 |
+  | Jun 2026 | 65.8% | 6,748 | −0.017 | −0.014 | −0.18 | −0.15 |
+  | Jul 2026 | 65.3% | 6,689 | −0.004 | −0.002 | −0.16 | −0.12 |
 
-  July's lower MSOA count is Sheffield Teaching Hospitals not submitting that month.
+  July's lower MSOA count is the Bristol merger (61 MSOAs) plus Plymouth (59)
+  — not Sheffield, which is absent from all four months, as is Torbay.
 - 73–74% of MSOA HLE variance is within trust catchments.
 - Median within-catchment HLE range (trusts with ≥10 MSOAs): 16.7 (M) / 17.4 (F) years, against a 13.5 / 14.5 range of catchment medians.
-- Trusts' 18-week share ranges 34 pp (IQR 7 pp); the neighbourhoods behind the worst-waiting quartile have median HLE 65.8 (M) vs 65.0 for the best-waiting quartile — no gradient.
+- Trusts' 18-week share ranges 34 pp (IQR 7 pp). Comparing the worst- and best-waiting quartiles of trusts gives two different answers depending on the statistic, and the first draft named the wrong one: the **median of trust-level medians** is 65.8 vs 65.1 (M), each trust counting once; **pooling the neighbourhoods** those trusts actually serve gives 65.0 vs 65.2 (M) and 66.2 vs 66.9 (F), 1,890 against 1,352 MSOAs. No meaningful gradient either way, and the pooled version tilts mildly against the expected direction.
 
 So the honest thesis is not "the two maps can't be joined, so nobody can
 prove the link". It is: **the two maps can be joined, imperfectly but
@@ -128,6 +160,7 @@ reconcile to the provider-level England total for each month.
 
 - HLE 2019–2023 straddles the pandemic; five-year pooling; Census 2021 health prevalence assumed constant across the period.
 - Not comparable with the APS-based national HLE (England ~61–62). The 65.1 / 66.5 here is the Census-based figure.
-- RTT is a monthly snapshot; July 2026 is the headline month and four providers did not submit it. April–June are used only to check the result is stable.
+- RTT is a monthly snapshot; July 2026 is the headline month and three acute trusts plus one independent provider did not submit it. April–June are used only to check the result is stable.
+- HLE describes 2019–2023; RTT describes 2026. The test is whether places with different *historical* healthy-life profiles are *currently* served by providers with systematically different waiting performance. It is not a test of whether waiting affects health.
 - The catchment crosswalk is admissions, not RTT pathways; acute only; rounded to 5; <8 admissions suppressed.
 - No causal claim in either direction. Zero correlation at neighbourhood-by-dominant-trust level does not mean waiting is unrelated to health for individuals.

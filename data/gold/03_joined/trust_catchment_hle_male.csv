@@ -1,115 +1,116 @@
 trust_code,trust_name,n_msoa,hle_median,hle_p25,hle_p75,hle_min,hle_max,pct_within_18,total_waiting,hle_iqr,hle_range,sex
-R0A,Manchester University NHS Foundation Trust,97,61.3,57.2,66.6,53.7,74.2,0.639,167649.0,9.4,20.5,Male
-R0B,South Tyneside and Sunderland NHS Foundation Trust,65,59.9,57.1,62.6,51.0,72.0,0.758,61880.0,5.5,21.0,Male
-R0D,University Hospitals Dorset NHS Foundation Trust,68,66.95,64.05,70.125,56.4,72.9,0.668,67365.0,6.075,16.5,Male
+R0A,Manchester University NHS Foundation Trust,97,61.3,57.2,66.6,53.7,74.2,0.639,166776.0,9.4,20.5,Male
+R0B,South Tyneside and Sunderland NHS Foundation Trust,65,59.9,57.1,62.6,51.0,72.0,0.758,61863.0,5.5,21.0,Male
+R0D,University Hospitals Dorset NHS Foundation Trust,68,66.95,64.05,70.125,56.4,72.9,0.668,67345.0,6.075,16.5,Male
 R1F,Isle of Wight NHS Trust,18,64.45,61.4,66.375,56.5,70.1,0.658,12927.0,4.975,13.6,Male
-R1H,Barts Health NHS Trust,112,62.25,60.5,64.25,56.9,72.5,0.638,121618.0,3.75,15.6,Male
-R1K,London North West University Healthcare NHS Trust,80,66.1,64.5,68.425,58.2,74.7,0.661,80601.0,3.925,16.5,Male
-RA2,Royal Surrey County Hospital NHS Foundation Trust,34,71.0,68.55,72.9,63.3,75.4,0.643,31177.0,4.35,12.1,Male
-RA7,University Hospitals Bristol and Weston NHS Foundation Trust,57,65.0,61.3,68.8,54.1,73.7,0.7,95525.0,7.5,19.6,Male
-RAE,Bradford Teaching Hospitals NHS Foundation Trust,47,59.2,56.0,62.25,51.0,70.8,0.685,31412.0,6.25,19.8,Male
-RAJ,Mid and South Essex NHS Foundation Trust,135,67.0,64.0,69.85,55.9,74.3,0.498,165420.0,5.85,18.4,Male
-RAL,Royal Free London NHS Foundation Trust,127,66.0,62.55,69.4,58.0,75.9,0.627,139727.0,6.85,17.9,Male
-RAS,The Hillingdon Hospitals NHS Foundation Trust,33,65.9,63.5,68.8,61.2,73.3,0.638,32942.0,5.3,12.1,Male
-RAX,Kingston and Richmond NHS Foundation Trust,47,71.1,68.0,72.45,64.6,75.1,0.682,40341.0,4.45,10.5,Male
-RBD,Dorset County Hospital NHS Foundation Trust,26,66.5,65.6,68.45,58.7,71.7,0.6,23380.0,2.85,13.0,Male
-RBK,Walsall Healthcare NHS Trust,35,59.5,57.7,63.0,52.4,69.5,0.738,27855.0,5.3,17.1,Male
-RBL,Wirral University Teaching Hospital NHS Foundation Trust,45,64.4,58.8,68.0,47.8,73.2,0.652,44108.0,9.2,25.4,Male
-RBN,Mersey and West Lancashire Teaching Hospitals NHS Trust,78,63.25,59.6,67.45,51.2,72.4,0.665,84465.0,7.85,21.2,Male
-RBT,Mid Cheshire Hospitals NHS Foundation Trust,41,65.9,61.9,69.2,57.9,72.4,0.707,29199.0,7.3,14.5,Male
+R1H,Barts Health NHS Trust,112,62.25,60.5,64.25,56.9,72.5,0.638,121541.0,3.75,15.6,Male
+R1K,London North West University Healthcare NHS Trust,80,66.1,64.5,68.425,58.2,74.7,0.661,80569.0,3.925,16.5,Male
+RA2,Royal Surrey County Hospital NHS Foundation Trust,34,71.0,68.55,72.9,63.3,75.4,0.643,31092.0,4.35,12.1,Male
+RA7,North Bristol NHS Trust,61,67.4,63.8,69.7,57.7,74.4,0.701,94932.0,5.9,16.7,Male
+RA7,University Hospitals Bristol and Weston NHS Foundation Trust,57,65.0,61.3,68.8,54.1,73.7,0.701,94932.0,7.5,19.6,Male
+RAE,Bradford Teaching Hospitals NHS Foundation Trust,47,59.2,56.0,62.25,51.0,70.8,0.685,31409.0,6.25,19.8,Male
+RAJ,Mid and South Essex NHS Foundation Trust,135,67.0,64.0,69.85,55.9,74.3,0.498,165372.0,5.85,18.4,Male
+RAL,Royal Free London NHS Foundation Trust,127,66.0,62.55,69.4,58.0,75.9,0.627,139655.0,6.85,17.9,Male
+RAS,The Hillingdon Hospitals NHS Foundation Trust,33,65.9,63.5,68.8,61.2,73.3,0.638,32932.0,5.3,12.1,Male
+RAX,Kingston and Richmond NHS Foundation Trust,47,71.1,68.0,72.45,64.6,75.1,0.681,40296.0,4.45,10.5,Male
+RBD,Dorset County Hospital NHS Foundation Trust,26,66.5,65.6,68.45,58.7,71.7,0.6,23375.0,2.85,13.0,Male
+RBK,Walsall Healthcare NHS Trust,35,59.5,57.7,63.0,52.4,69.5,0.738,27853.0,5.3,17.1,Male
+RBL,Wirral University Teaching Hospital NHS Foundation Trust,45,64.4,58.8,68.0,47.8,73.2,0.652,43975.0,9.2,25.4,Male
+RBN,Mersey and West Lancashire Teaching Hospitals NHS Trust,78,63.25,59.6,67.45,51.2,72.4,0.666,83620.0,7.85,21.2,Male
+RBT,Mid Cheshire Hospitals NHS Foundation Trust,41,65.9,61.9,69.2,57.9,72.4,0.707,29183.0,7.3,14.5,Male
 RC9,Bedfordshire Hospitals NHS Foundation Trust,77,66.8,63.0,68.8,56.3,76.3,0.591,85541.0,5.8,20.0,Male
-RCB,York and Scarborough Teaching Hospitals NHS Foundation Trust,62,66.85,62.95,69.45,53.6,73.2,0.585,56760.0,6.5,19.6,Male
-RCD,Harrogate and District NHS Foundation Trust,25,71.1,66.6,72.6,59.5,75.4,0.736,21345.0,6.0,15.9,Male
+RCB,York and Scarborough Teaching Hospitals NHS Foundation Trust,62,66.85,62.95,69.45,53.6,73.2,0.585,56751.0,6.5,19.6,Male
+RCD,Harrogate and District NHS Foundation Trust,25,71.1,66.6,72.6,59.5,75.4,0.736,21283.0,6.0,15.9,Male
 RCF,Airedale NHS Foundation Trust,24,66.5,63.65,69.6,55.7,73.1,0.714,14618.0,5.95,17.4,Male
 RCX,"The Queen Elizabeth Hospital, King's Lynn, NHS Foundation Trust",27,63.9,62.4,65.95,55.2,69.7,0.643,24150.0,3.55,14.5,Male
-RD1,Royal United Hospitals Bath NHS Foundation Trust,58,67.85,65.325,69.5,57.9,73.9,0.706,41031.0,4.175,16.0,Male
-RD8,Milton Keynes University Hospital NHS Foundation Trust,42,67.05,63.925,69.575,57.4,71.6,0.588,37528.0,5.65,14.2,Male
-RDE,East Suffolk and North Essex NHS Foundation Trust,86,66.55,62.45,68.725,50.4,72.8,0.597,95757.0,6.275,22.4,Male
+RD1,Royal United Hospitals Bath NHS Foundation Trust,58,67.85,65.325,69.5,57.9,73.9,0.706,40996.0,4.175,16.0,Male
+RD8,Milton Keynes University Hospital NHS Foundation Trust,42,67.05,63.925,69.575,57.4,71.6,0.588,37518.0,5.65,14.2,Male
+RDE,East Suffolk and North Essex NHS Foundation Trust,86,66.55,62.45,68.725,50.4,72.8,0.597,95735.0,6.275,22.4,Male
 RDU,Frimley Health NHS Foundation Trust,95,69.1,66.15,72.25,59.9,75.6,0.614,65983.0,6.1,15.7,Male
-REF,Royal Cornwall Hospitals NHS Trust,57,65.1,63.1,67.1,58.1,72.3,0.74,44275.0,4.0,14.2,Male
-REM,Liverpool University Hospitals NHS Foundation Trust,88,57.6,55.8,63.8,50.1,72.5,0.607,63031.0,8.0,22.4,Male
-RF4,"Barking, Havering and Redbridge University Hospitals NHS Trust",79,64.1,61.7,66.65,57.9,74.0,0.686,67654.0,4.95,16.1,Male
+REF,Royal Cornwall Hospitals NHS Trust,57,65.1,63.1,67.1,58.1,72.3,0.739,44267.0,4.0,14.2,Male
+REM,Liverpool University Hospitals NHS Foundation Trust,88,57.6,55.8,63.8,50.1,72.5,0.607,61513.0,8.0,22.4,Male
+RF4,"Barking, Havering and Redbridge University Hospitals NHS Trust",79,64.1,61.7,66.65,57.9,74.0,0.686,67651.0,4.95,16.1,Male
 RFF,Barnsley Hospital NHS Foundation Trust,31,59.4,58.1,62.3,54.1,71.0,0.706,21760.0,4.2,16.9,Male
-RFR,The Rotherham NHS Foundation Trust,32,62.7,57.625,64.65,52.2,68.6,0.69,29510.0,7.025,16.4,Male
-RFS,Chesterfield Royal Hospital NHS Foundation Trust,36,62.55,60.325,66.05,53.6,71.5,0.632,26876.0,5.725,17.9,Male
-RGN,North West Anglia NHS Foundation Trust,66,65.8,63.6,68.6,57.2,72.4,0.596,76053.0,5.0,15.2,Male
+RFR,The Rotherham NHS Foundation Trust,32,62.7,57.625,64.65,52.2,68.6,0.69,29503.0,7.025,16.4,Male
+RFS,Chesterfield Royal Hospital NHS Foundation Trust,36,62.55,60.325,66.05,53.6,71.5,0.632,26874.0,5.725,17.9,Male
+RGN,North West Anglia NHS Foundation Trust,66,65.8,63.6,68.6,57.2,72.4,0.596,76040.0,5.0,15.2,Male
 RGP,James Paget University Hospitals NHS Foundation Trust,30,64.35,60.2,66.8,52.0,69.2,0.607,31065.0,6.6,17.2,Male
-RGR,West Suffolk NHS Foundation Trust,35,68.0,65.75,69.75,59.3,72.0,0.657,33152.0,4.0,12.7,Male
+RGR,West Suffolk NHS Foundation Trust,35,68.0,65.75,69.75,59.3,72.0,0.657,33149.0,4.0,12.7,Male
 RGT,Cambridge University Hospitals NHS Foundation Trust,51,69.4,67.65,71.5,60.3,74.2,0.653,60206.0,3.85,13.9,Male
-RH5,Somerset NHS Foundation Trust,64,67.3,64.6,68.55,57.1,71.9,0.649,54854.0,3.95,14.8,Male
-RH8,Royal Devon University Healthcare NHS Foundation Trust,79,67.1,64.55,69.7,57.9,72.4,0.633,75545.0,5.15,14.5,Male
-RHM,University Hospital Southampton NHS Foundation Trust,63,66.1,62.3,70.3,57.6,74.1,0.646,64407.0,8.0,16.5,Male
-RHU,Portsmouth Hospitals University NHS Trust,75,66.2,62.4,69.25,53.9,73.1,0.61,58058.0,6.85,19.2,Male
+RH5,Somerset NHS Foundation Trust,64,67.3,64.6,68.55,57.1,71.9,0.649,54833.0,3.95,14.8,Male
+RH8,Royal Devon University Healthcare NHS Foundation Trust,79,67.1,64.55,69.7,57.9,72.4,0.633,75506.0,5.15,14.5,Male
+RHM,University Hospital Southampton NHS Foundation Trust,63,66.1,62.3,70.3,57.6,74.1,0.646,64401.0,8.0,16.5,Male
+RHU,Portsmouth Hospitals University NHS Trust,75,66.2,62.4,69.25,53.9,73.1,0.61,58044.0,6.85,19.2,Male
 RHW,Royal Berkshire NHS Foundation Trust,63,70.4,65.65,71.5,61.0,76.6,0.833,34892.0,5.85,15.6,Male
-RJ1,Guy's and St Thomas' NHS Foundation Trust,47,63.5,62.25,65.4,58.9,70.0,0.682,109056.0,3.15,11.1,Male
-RJ2,Lewisham and Greenwich NHS Trust,82,64.6,62.4,66.4,59.4,70.2,0.66,55829.0,4.0,10.8,Male
-RJ6,Croydon Health Services NHS Trust,45,65.2,62.6,68.8,58.1,72.5,0.729,37338.0,6.2,14.4,Male
-RJ7,St George's University Hospitals NHS Foundation Trust,56,66.6,64.425,70.7,59.4,74.5,0.646,70262.0,6.275,15.1,Male
+RJ1,Guy's and St Thomas' NHS Foundation Trust,47,63.5,62.25,65.4,58.9,70.0,0.683,108883.0,3.15,11.1,Male
+RJ2,Lewisham and Greenwich NHS Trust,82,64.6,62.4,66.4,59.4,70.2,0.66,55811.0,4.0,10.8,Male
+RJ6,Croydon Health Services NHS Trust,45,65.2,62.6,68.8,58.1,72.5,0.729,37332.0,6.2,14.4,Male
+RJ7,St George's University Hospitals NHS Foundation Trust,56,66.6,64.425,70.7,59.4,74.5,0.646,70256.0,6.275,15.1,Male
 RJC,South Warwickshire University NHS Foundation Trust,29,69.9,67.4,70.8,60.3,74.8,0.683,31237.0,3.4,14.5,Male
-RJE,University Hospitals of North Midlands NHS Trust,82,62.25,58.725,68.0,51.4,72.2,0.614,74375.0,9.275,20.8,Male
-RJL,NorThern Lincolnshire and Goole NHS Foundation Trust,56,63.9,60.025,66.475,48.0,69.8,0.598,42583.0,6.45,21.8,Male
-RJN,East Cheshire NHS Trust,22,69.75,64.6,72.3,58.7,76.0,0.624,16489.0,7.7,17.3,Male
-RJR,Countess of Chester Hospital NHS Foundation Trust,29,67.8,60.8,70.1,56.5,73.6,0.676,32138.0,9.3,17.1,Male
-RJZ,King's College Hospital NHS Foundation Trust,72,66.9,64.3,69.85,58.0,74.2,0.668,89928.0,5.55,16.2,Male
-RK5,Sherwood Forest Hospitals NHS Foundation Trust,42,61.4,58.35,64.275,52.7,70.8,0.64,33453.0,5.925,18.1,Male
-RKB,University Hospitals Coventry and Warwickshire NHS Trust,57,63.7,59.4,67.8,54.3,71.4,0.583,68683.0,8.4,17.1,Male
-RKE,Whittington Health NHS Trust,20,65.7,62.525,71.2,57.5,73.1,0.683,22907.0,8.675,15.6,Male
-RL4,The Royal Wolverhampton NHS Trust,54,61.8,59.425,64.55,56.5,69.0,0.639,70399.0,5.125,12.5,Male
-RLQ,Wye Valley NHS Trust,23,67.6,64.05,68.55,58.1,70.6,0.633,27798.0,4.5,12.5,Male
+RJE,University Hospitals of North Midlands NHS Trust,82,62.25,58.725,68.0,51.4,72.2,0.614,74220.0,9.275,20.8,Male
+RJL,NorThern Lincolnshire and Goole NHS Foundation Trust,56,63.9,60.025,66.475,48.0,69.8,0.598,42582.0,6.45,21.8,Male
+RJN,East Cheshire NHS Trust,22,69.75,64.6,72.3,58.7,76.0,0.624,16483.0,7.7,17.3,Male
+RJR,Countess of Chester Hospital NHS Foundation Trust,29,67.8,60.8,70.1,56.5,73.6,0.678,29228.0,9.3,17.1,Male
+RJZ,King's College Hospital NHS Foundation Trust,72,66.9,64.3,69.85,58.0,74.2,0.668,89895.0,5.55,16.2,Male
+RK5,Sherwood Forest Hospitals NHS Foundation Trust,42,61.4,58.35,64.275,52.7,70.8,0.64,33450.0,5.925,18.1,Male
+RKB,University Hospitals Coventry and Warwickshire NHS Trust,57,63.7,59.4,67.8,54.3,71.4,0.583,68578.0,8.4,17.1,Male
+RKE,Whittington Health NHS Trust,20,65.7,62.525,71.2,57.5,73.1,0.683,22905.0,8.675,15.6,Male
+RL4,The Royal Wolverhampton NHS Trust,54,61.8,59.425,64.55,56.5,69.0,0.638,70201.0,5.125,12.5,Male
+RLQ,Wye Valley NHS Trust,23,67.6,64.05,68.55,58.1,70.6,0.66,22931.0,4.5,12.5,Male
 RLT,George Eliot Hospital NHS Trust,24,63.3,60.625,66.275,57.5,71.1,0.643,19328.0,5.65,13.6,Male
-RM1,Norfolk and Norwich University Hospitals NHS Foundation Trust,74,66.7,64.05,68.075,54.0,71.4,0.618,66449.0,4.025,17.4,Male
-RM3,NorThern Care Alliance NHS Foundation Trust,119,61.1,57.3,64.7,51.4,70.8,0.559,134561.0,7.4,19.4,Male
+RM1,Norfolk and Norwich University Hospitals NHS Foundation Trust,74,66.7,64.05,68.075,54.0,71.4,0.618,66443.0,4.025,17.4,Male
+RM3,NorThern Care Alliance NHS Foundation Trust,119,61.1,57.3,64.7,51.4,70.8,0.559,134418.0,7.4,19.4,Male
 RMC,Bolton NHS Foundation Trust,35,62.0,57.95,66.0,51.5,72.1,0.61,37306.0,8.05,20.6,Male
-RMP,Tameside and Glossop Integrated Care NHS Foundation Trust,32,62.0,58.375,64.45,54.5,70.3,0.782,16714.0,6.075,15.8,Male
-RN3,Great Western Hospitals NHS Foundation Trust,47,68.1,64.85,69.65,55.4,74.0,0.579,42820.0,4.8,18.6,Male
-RN5,Hampshire Hospitals NHS Foundation Trust,61,70.3,65.9,72.3,59.9,74.9,0.649,49240.0,6.4,15.0,Male
-RN7,Dartford and Gravesham NHS Trust,40,66.15,62.2,69.125,59.0,71.3,0.601,29972.0,6.925,12.3,Male
-RNA,The Dudley Group NHS Foundation Trust,52,63.4,59.5,66.7,56.0,71.2,0.639,48052.0,7.2,15.2,Male
-RNN,North Cumbria Integrated Care NHS Foundation Trust,39,64.8,59.6,68.75,54.9,71.6,0.661,35424.0,9.15,16.7,Male
-RNQ,Kettering General Hospital NHS Foundation Trust,37,64.4,61.6,66.4,57.5,70.8,0.676,31176.0,4.8,13.3,Male
-RNS,Northampton General Hospital NHS Trust,47,66.1,62.5,69.45,57.7,72.8,0.606,39940.0,6.95,15.1,Male
-RNZ,Salisbury NHS Foundation Trust,30,68.55,66.65,70.075,63.1,72.5,0.71,29788.0,3.425,9.4,Male
-RP5,Doncaster and Bassetlaw Teaching Hospitals NHS Foundation Trust,53,62.0,59.7,65.7,54.0,70.8,0.636,54941.0,6.0,16.8,Male
-RPA,Medway NHS Foundation Trust,51,63.7,60.8,66.4,53.6,71.8,0.58,35231.0,5.6,18.2,Male
-RQM,Chelsea and Westminster Hospital NHS Foundation Trust,57,66.4,64.4,70.1,60.4,78.3,0.681,73258.0,5.7,17.9,Male
+RMP,Tameside and Glossop Integrated Care NHS Foundation Trust,32,62.0,58.375,64.45,54.5,70.3,0.782,16711.0,6.075,15.8,Male
+RN3,Great Western Hospitals NHS Foundation Trust,47,68.1,64.85,69.65,55.4,74.0,0.579,42801.0,4.8,18.6,Male
+RN5,Hampshire Hospitals NHS Foundation Trust,61,70.3,65.9,72.3,59.9,74.9,0.649,49222.0,6.4,15.0,Male
+RN7,Dartford and Gravesham NHS Trust,40,66.15,62.2,69.125,59.0,71.3,0.601,29970.0,6.925,12.3,Male
+RNA,The Dudley Group NHS Foundation Trust,52,63.4,59.5,66.7,56.0,71.2,0.64,48039.0,7.2,15.2,Male
+RNN,North Cumbria Integrated Care NHS Foundation Trust,39,64.8,59.6,68.75,54.9,71.6,0.661,35233.0,9.15,16.7,Male
+RNQ,Kettering General Hospital NHS Foundation Trust,37,64.4,61.6,66.4,57.5,70.8,0.676,31175.0,4.8,13.3,Male
+RNS,Northampton General Hospital NHS Trust,47,66.1,62.5,69.45,57.7,72.8,0.606,39936.0,6.95,15.1,Male
+RNZ,Salisbury NHS Foundation Trust,30,68.55,66.65,70.075,63.1,72.5,0.71,29777.0,3.425,9.4,Male
+RP5,Doncaster and Bassetlaw Teaching Hospitals NHS Foundation Trust,53,62.0,59.7,65.7,54.0,70.8,0.636,54937.0,6.0,16.8,Male
+RPA,Medway NHS Foundation Trust,51,63.7,60.8,66.4,53.6,71.8,0.58,35225.0,5.6,18.2,Male
+RQM,Chelsea and Westminster Hospital NHS Foundation Trust,57,66.4,64.4,70.1,60.4,78.3,0.682,73170.0,5.7,17.9,Male
 RQW,The Princess Alexandra Hospital NHS Trust,37,67.7,64.1,69.9,61.0,72.5,0.685,38992.0,5.8,11.5,Male
 RQX,Homerton Healthcare NHS Foundation Trust,31,61.9,60.6,62.8,58.0,66.8,0.736,26141.0,2.2,8.8,Male
-RR7,Gateshead Health NHS Foundation Trust,29,59.7,57.5,64.9,53.8,69.2,0.772,11674.0,7.4,15.4,Male
-RR8,Leeds Teaching Hospitals NHS Trust,101,63.9,58.2,66.8,52.0,73.9,0.678,88602.0,8.6,21.9,Male
-RRF,"Wrightington, Wigan and Leigh NHS Foundation Trust",41,62.8,59.7,65.6,52.6,72.2,0.606,45765.0,5.9,19.6,Male
-RRK,University Hospitals Birmingham NHS Foundation Trust,156,61.3,57.2,66.5,53.0,75.4,0.672,94792.0,9.3,22.4,Male
-RRV,University College London Hospitals NHS Foundation Trust,35,63.6,61.55,66.25,57.8,76.3,0.653,78841.0,4.7,18.5,Male
-RTD,The Newcastle upon Tyne Hospitals NHS Foundation Trust,42,60.0,56.75,66.175,50.5,73.1,0.739,88477.0,9.425,22.6,Male
-RTE,Gloucestershire Hospitals NHS Foundation Trust,77,68.4,65.2,70.4,58.2,73.7,0.72,69444.0,5.2,15.5,Male
-RTF,Northumbria Healthcare NHS Foundation Trust,60,63.3,60.15,67.85,49.3,72.6,0.839,39442.0,7.7,23.3,Male
+RR7,Gateshead Health NHS Foundation Trust,29,59.7,57.5,64.9,53.8,69.2,0.772,11673.0,7.4,15.4,Male
+RR8,Leeds Teaching Hospitals NHS Trust,101,63.9,58.2,66.8,52.0,73.9,0.678,88572.0,8.6,21.9,Male
+RRF,"Wrightington, Wigan and Leigh NHS Foundation Trust",41,62.8,59.7,65.6,52.6,72.2,0.606,45733.0,5.9,19.6,Male
+RRK,University Hospitals Birmingham NHS Foundation Trust,156,61.3,57.2,66.5,53.0,75.4,0.672,94561.0,9.3,22.4,Male
+RRV,University College London Hospitals NHS Foundation Trust,35,63.6,61.55,66.25,57.8,76.3,0.653,78451.0,4.7,18.5,Male
+RTD,The Newcastle upon Tyne Hospitals NHS Foundation Trust,42,60.0,56.75,66.175,50.5,73.1,0.739,88368.0,9.425,22.6,Male
+RTE,Gloucestershire Hospitals NHS Foundation Trust,77,68.4,65.2,70.4,58.2,73.7,0.721,68792.0,5.2,15.5,Male
+RTF,Northumbria Healthcare NHS Foundation Trust,60,63.3,60.15,67.85,49.3,72.6,0.839,39421.0,7.7,23.3,Male
 RTG,University Hospitals of Derby and Burton NHS Foundation Trust,105,65.7,61.1,68.3,54.6,73.8,0.607,99108.0,7.2,19.2,Male
-RTH,Oxford University Hospitals NHS Foundation Trust,85,69.3,67.1,70.8,60.1,73.8,0.625,90597.0,3.7,13.7,Male
+RTH,Oxford University Hospitals NHS Foundation Trust,85,69.3,67.1,70.8,60.1,73.8,0.625,90544.0,3.7,13.7,Male
 RTK,Ashford and St Peter's Hospitals NHS Foundation Trust,44,68.25,67.35,71.175,62.6,73.9,0.618,54977.0,3.825,11.3,Male
-RTP,Surrey and Sussex Healthcare NHS Trust,54,68.65,66.525,70.9,60.8,74.3,0.652,51721.0,4.375,13.5,Male
-RTR,South Tees Hospitals NHS Foundation Trust,57,62.8,58.3,68.8,50.9,73.7,0.658,57822.0,10.5,22.8,Male
+RTP,Surrey and Sussex Healthcare NHS Trust,54,68.65,66.525,70.9,60.8,74.3,0.652,51710.0,4.375,13.5,Male
+RTR,South Tees Hospitals NHS Foundation Trust,57,62.8,58.3,68.8,50.9,73.7,0.658,57767.0,10.5,22.8,Male
 RTX,University Hospitals of Morecambe Bay NHS Foundation Trust,46,66.7,62.725,69.25,51.3,72.7,0.686,36259.0,6.525,21.4,Male
-RVR,Epsom and St Helier University Hospitals NHS Trust,52,69.15,66.225,71.65,60.6,76.9,0.669,56820.0,5.425,16.3,Male
-RVV,East Kent Hospitals University NHS Foundation Trust,83,64.9,61.5,67.7,54.0,70.1,0.552,83107.0,6.2,16.1,Male
-RVW,North Tees and Hartlepool NHS Foundation Trust,45,60.2,56.4,67.1,47.7,73.1,0.712,23668.0,10.7,25.4,Male
-RWA,Hull University Teaching Hospitals NHS Trust,62,63.6,59.025,68.2,52.1,73.2,0.56,85759.0,9.175,21.1,Male
-RWD,United Lincolnshire Teaching Hospitals NHS Trust,69,64.3,60.1,67.0,52.7,71.0,0.623,69786.0,6.9,18.3,Male
-RWE,University Hospitals of Leicester NHS Trust,117,65.8,62.5,68.8,53.1,73.1,0.6,116558.0,6.3,20.0,Male
-RWF,Maidstone and Tunbridge Wells NHS Trust,61,69.1,67.0,71.8,57.7,75.1,0.73,50736.0,4.8,17.4,Male
-RWG,West Hertfordshire Teaching Hospitals NHS Trust,63,68.7,66.0,71.2,59.2,75.8,0.701,44482.0,5.2,16.6,Male
-RWH,East and North Hertfordshire NHS Trust,56,67.45,64.8,69.75,62.1,75.5,0.657,55861.0,4.95,13.4,Male
-RWJ,Stockport NHS Foundation Trust,46,66.3,62.2,69.725,50.5,75.3,0.622,34684.0,7.525,24.8,Male
-RWP,Worcestershire Acute Hospitals NHS Trust,82,66.25,63.4,68.6,54.7,73.5,0.617,58986.0,5.2,18.8,Male
-RWW,Warrington and Halton Teaching Hospitals NHS Foundation Trust,32,65.95,59.45,68.65,54.4,74.8,0.649,35330.0,9.2,20.4,Male
-RWY,Calderdale and Huddersfield NHS Foundation Trust,60,64.1,59.825,67.025,52.5,71.4,0.762,34861.0,7.2,18.9,Male
+RVR,Epsom and St Helier University Hospitals NHS Trust,52,69.15,66.225,71.65,60.6,76.9,0.669,56798.0,5.425,16.3,Male
+RVV,East Kent Hospitals University NHS Foundation Trust,83,64.9,61.5,67.7,54.0,70.1,0.552,83070.0,6.2,16.1,Male
+RVW,North Tees and Hartlepool NHS Foundation Trust,45,60.2,56.4,67.1,47.7,73.1,0.712,23667.0,10.7,25.4,Male
+RWA,Hull University Teaching Hospitals NHS Trust,62,63.6,59.025,68.2,52.1,73.2,0.56,85756.0,9.175,21.1,Male
+RWD,United Lincolnshire Teaching Hospitals NHS Trust,69,64.3,60.1,67.0,52.7,71.0,0.623,69782.0,6.9,18.3,Male
+RWE,University Hospitals of Leicester NHS Trust,117,65.8,62.5,68.8,53.1,73.1,0.6,116532.0,6.3,20.0,Male
+RWF,Maidstone and Tunbridge Wells NHS Trust,61,69.1,67.0,71.8,57.7,75.1,0.73,50730.0,4.8,17.4,Male
+RWG,West Hertfordshire Teaching Hospitals NHS Trust,63,68.7,66.0,71.2,59.2,75.8,0.701,44476.0,5.2,16.6,Male
+RWH,East and North Hertfordshire NHS Trust,56,67.45,64.8,69.75,62.1,75.5,0.657,55823.0,4.95,13.4,Male
+RWJ,Stockport NHS Foundation Trust,46,66.3,62.2,69.725,50.5,75.3,0.622,34676.0,7.525,24.8,Male
+RWP,Worcestershire Acute Hospitals NHS Trust,82,66.25,63.4,68.6,54.7,73.5,0.617,58949.0,5.2,18.8,Male
+RWW,Warrington and Halton Teaching Hospitals NHS Foundation Trust,32,65.95,59.45,68.65,54.4,74.8,0.649,35315.0,9.2,20.4,Male
+RWY,Calderdale and Huddersfield NHS Foundation Trust,60,64.1,59.825,67.025,52.5,71.4,0.762,34776.0,7.2,18.9,Male
 RX1,Nottingham University Hospitals NHS Trust,92,63.85,58.9,67.3,48.9,73.8,0.615,78304.0,8.4,24.9,Male
-RXC,East Sussex Healthcare NHS Trust,48,65.1,61.475,67.925,53.9,73.1,0.69,56051.0,6.45,19.2,Male
-RXF,Mid Yorkshire Teaching NHS Trust,74,62.05,58.525,65.0,54.1,70.1,0.66,56479.0,6.475,16.0,Male
+RXC,East Sussex Healthcare NHS Trust,48,65.1,61.475,67.925,53.9,73.1,0.69,55950.0,6.45,19.2,Male
+RXF,Mid Yorkshire Teaching NHS Trust,74,62.05,58.525,65.0,54.1,70.1,0.66,56475.0,6.475,16.0,Male
 RXK,Sandwell and West Birmingham Hospitals NHS Trust,53,58.6,56.7,61.4,54.1,67.3,0.604,67233.0,4.7,13.2,Male
-RXL,Blackpool Teaching Hospitals NHS Foundation Trust,40,62.45,57.45,65.525,47.9,70.4,0.578,40794.0,8.075,22.5,Male
-RXN,Lancashire Teaching Hospitals NHS Foundation Trust,50,65.95,60.75,68.475,54.9,73.0,0.589,61033.0,7.725,18.1,Male
-RXP,County Durham and Darlington NHS Foundation Trust,63,60.9,57.5,65.0,52.5,71.9,0.654,54409.0,7.5,19.4,Male
-RXQ,Buckinghamshire Healthcare NHS Trust,61,70.4,66.5,72.1,60.1,76.6,0.637,47659.0,5.6,16.5,Male
-RXR,East Lancashire Hospitals NHS Trust,61,60.4,58.1,65.7,53.1,73.2,0.721,47031.0,7.6,20.1,Male
+RXL,Blackpool Teaching Hospitals NHS Foundation Trust,40,62.45,57.45,65.525,47.9,70.4,0.578,40789.0,8.075,22.5,Male
+RXN,Lancashire Teaching Hospitals NHS Foundation Trust,50,65.95,60.75,68.475,54.9,73.0,0.589,61022.0,7.725,18.1,Male
+RXP,County Durham and Darlington NHS Foundation Trust,63,60.9,57.5,65.0,52.5,71.9,0.654,54384.0,7.5,19.4,Male
+RXQ,Buckinghamshire Healthcare NHS Trust,61,70.4,66.5,72.1,60.1,76.6,0.637,47650.0,5.6,16.5,Male
+RXR,East Lancashire Hospitals NHS Trust,61,60.4,58.1,65.7,53.1,73.2,0.721,47026.0,7.6,20.1,Male
 RXW,The Shrewsbury and Telford Hospital NHS Trust,62,66.05,62.15,68.35,55.6,72.3,0.679,37291.0,6.2,16.7,Male
-RYJ,Imperial College Healthcare NHS Trust,73,66.8,63.1,69.6,54.9,76.5,0.699,83496.0,6.5,21.6,Male
-RYR,University Hospitals Sussex NHS Foundation Trust,118,66.95,64.4,69.875,54.2,75.0,0.531,117217.0,5.475,20.8,Male
+RYJ,Imperial College Healthcare NHS Trust,73,66.8,63.1,69.6,54.9,76.5,0.699,83412.0,6.5,21.6,Male
+RYR,University Hospitals Sussex NHS Foundation Trust,118,66.95,64.4,69.875,54.2,75.0,0.531,117207.0,5.475,20.8,Male

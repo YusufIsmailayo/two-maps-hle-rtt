@@ -19,7 +19,7 @@ import numpy as np
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from _common import GOLD_DIR, SILVER_DIR  # noqa: E402
+from _common import GOLD_DIR, SILVER_DIR, apply_trust_successions  # noqa: E402
 
 OUT = GOLD_DIR / "05_months"
 OUT.mkdir(parents=True, exist_ok=True)
@@ -29,7 +29,6 @@ def main() -> None:
     prov_all = pd.read_parquet(SILVER_DIR / "rtt" / "rtt_provider.parquet")
     cat = pd.read_parquet(SILVER_DIR / "catchment" / "msoa_trust_admissions.parquet")
     cat = cat[(cat.catchment_year == 2024) & (cat.admission_type == "elective")]
-    fp = cat[cat.fptp][["msoa_code", "trust_code"]]
     hle = pd.read_parquet(GOLD_DIR / "01_spread" / "msoa_hle_icb.parquet")
     wide = hle.pivot(index="msoa_code", columns="sex", values="hle").rename(columns={"Male": "hle_male", "Female": "hle_female"})
     icb_of = hle.drop_duplicates("msoa_code").set_index("msoa_code").icb_ods
@@ -37,12 +36,16 @@ def main() -> None:
 
     rows = []
     for period, prov in prov_all.groupby("period"):
+        # Trust codes are resolved per period: April-June keep RVJ and RA7 as
+        # two trusts, July maps RVJ onto its successor.
+        cat_p = cat.assign(trust_code=apply_trust_successions(cat["trust_code"], period))
+        fp = cat_p[cat_p.fptp][["msoa_code", "trust_code"]]
         eng = prov.within_18.sum() / prov.total_waiting.sum()
         # Route B: MSOA HLE vs FPTP trust 18wk%
         b = fp.merge(prov[["provider_code", "pct_within_18"]], left_on="trust_code", right_on="provider_code", how="left") \
               .merge(wide, left_on="msoa_code", right_index=True)
         # admissions-weighted alternative
-        w = cat.merge(prov[["provider_code", "pct_within_18"]], left_on="trust_code", right_on="provider_code", how="inner")
+        w = cat_p.merge(prov[["provider_code", "pct_within_18"]], left_on="trust_code", right_on="provider_code", how="inner")
         w["wt"] = w.patients_admitted * w.pct_within_18
         wm = (w.groupby("msoa_code").wt.sum() / w.groupby("msoa_code").patients_admitted.sum()).rename("weighted")
         b = b.merge(wm, left_on="msoa_code", right_index=True, how="left")

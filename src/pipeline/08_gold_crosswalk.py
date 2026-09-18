@@ -34,7 +34,7 @@ from pathlib import Path
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from _common import GOLD_DIR, SILVER_DIR  # noqa: E402
+from _common import GOLD_DIR, SILVER_DIR, apply_trust_successions  # noqa: E402
 
 OUT = GOLD_DIR / "02_crosswalk"
 OUT.mkdir(parents=True, exist_ok=True)
@@ -53,6 +53,11 @@ def main() -> None:
     cat_all = cat_all[cat_all.catchment_year == 2024]
     cat = cat_all[cat_all.admission_type == "elective"].copy()      # RTT is elective: join on elective catchment
     cat_any = cat_all[cat_all.admission_type == "all"].copy()       # comparison
+    # The catchment file predates July's trust mergers. Without this, a merged
+    # trust looks like a non-submitter and its neighbourhoods drop out of the
+    # join - which is exactly the error this pipeline shipped before the audit.
+    for frame in (cat, cat_any):
+        frame["trust_code"] = apply_trust_successions(frame["trust_code"], PERIOD)
     trust_lu = pd.read_parquet(SILVER_DIR / "catchment" / "trust_lookup.parquet")
     hle = pd.read_parquet(GOLD_DIR / "01_spread" / "msoa_hle_icb.parquet")
 

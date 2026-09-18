@@ -24,7 +24,7 @@ from pathlib import Path
 import pandas as pd
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from _common import BRONZE_DIR, SILVER_DIR  # noqa: E402
+from _common import BRONZE_DIR, SILVER_DIR, RTT_UNIDENTIFIED_COMMISSIONER  # noqa: E402
 
 OUT = SILVER_DIR / "rtt"
 OUT.mkdir(parents=True, exist_ok=True)
@@ -73,7 +73,16 @@ def silver_month(period: str, zip_path: Path) -> tuple[pd.DataFrame, pd.DataFram
     w18, o52 = band_cols(list(inc.columns))
     assert len(w18) == 18 and len(o52) == 53, (len(w18), len(o52))
 
+    # NHS England's published provider workbook excludes rows with no identified
+    # commissioner; the CSV extract includes them. I drop them here so the Silver
+    # totals are the published measure, and report what was dropped rather than
+    # letting it vanish silently.
     all_bands = [c for c in inc.columns if c.startswith("Gt ")]
+    unidentified = inc["Commissioner Org Code"].astype(str).str.startswith(RTT_UNIDENTIFIED_COMMISSIONER)
+    dropped = inc.loc[unidentified & (inc["Treatment Function Code"] == "C_999"), all_bands].sum().sum()
+    inc = inc[~unidentified].copy()
+    print(f"{period}: dropped {dropped:,.0f} pathways with commissioner "
+          f"{RTT_UNIDENTIFIED_COMMISSIONER} (not in NHS England's published provider totals)")
     inc["within_18"] = inc[w18].sum(axis=1)
     inc["over_52"] = inc[o52].sum(axis=1)
     # For incomplete pathways the 'Total' and 'unknown clock start' columns are

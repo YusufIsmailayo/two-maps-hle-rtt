@@ -1,3 +1,3 @@
-sex,min_msoa,n_lad,within_lad_range_median,within_lad_range_p90,within_lad_range_max,widest_lad,widest_lad_min,widest_lad_max,within_lad_iqr_median,between_lad_medians_range,n_lad_range_ge_13,n_lad_within_exceeds_between
-Female,10,277,13.6,19.2,25.9,Bradford,50.2,76.1,4.9,16.1,148,78
-Male,10,277,13.3,18.64,25.4,Wirral,47.8,73.2,4.95,15.7,144,76
+sex,min_msoa,n_lad,within_lad_range_median,within_lad_range_p90,within_lad_range_max,widest_lad,widest_lad_min,widest_lad_max,within_lad_iqr_median,between_lad_medians_range,n_lad_range_ge_13,within_lad_pairwise_median,within_lad_pairwise_p90,within_lad_pairwise_share_ge_13,n_pairs,n_lad_within_exceeds_between
+Female,10,277,13.6,19.2,25.9,Bradford,50.2,76.1,4.9,16.1,148,4.0,10.6,0.05,111695,78
+Male,10,277,13.3,18.64,25.4,Wirral,47.8,73.2,4.95,15.7,144,3.8,10.1,0.04,111654,76

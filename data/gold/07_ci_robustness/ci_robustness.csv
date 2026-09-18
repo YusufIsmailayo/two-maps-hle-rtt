@@ -1,0 +1,73 @@
+icb_name_short,range_point,range_conservative,interdecile_point,interdecile_conservative,sex,between_icb_median_spread,range_conservative_exceeds_between,interdecile_conservative_exceeds_between
+"Bath and North East Somerset, Swindon and Wiltshire",20.3,17.4,8.46,5.66,Female,10.0,True,False
+Birmingham and Solihull,23.3,20.8,15.5,12.4,Female,10.0,True,True
+Black Country,17.7,14.9,11.54,8.84,Female,10.0,True,False
+"Bristol, North Somerset and South Gloucestershire",20.7,17.5,13.34,10.4,Female,10.0,True,True
+Central East,22.4,19.5,10.94,8.1,Female,10.0,True,False
+Cheshire and Merseyside,26.7,24.1,16.38,13.7,Female,10.0,True,True
+Cornwall and the Isles of Scilly,15.6,11.6,8.02,4.67,Female,10.0,True,False
+Coventry and Warwickshire,21.8,18.3,13.06,10.18,Female,10.0,True,True
+Derby and Derbyshire,19.7,17.2,13.53,10.44,Female,10.0,True,True
+Devon,19.1,16.2,11.22,8.33,Female,10.0,True,False
+Dorset,19.6,16.6,8.55,5.6,Female,10.0,True,False
+Essex,22.0,19.3,10.72,8.12,Female,10.0,True,False
+Gloucestershire,17.0,14.1,9.85,7.05,Female,10.0,True,False
+Greater Manchester,24.9,22.3,15.06,12.08,Female,10.0,True,True
+Hampshire and Isle of Wight,22.7,19.2,12.14,9.28,Female,10.0,True,False
+Herefordshire and Worcestershire,18.6,15.2,10.43,7.8,Female,10.0,True,False
+Humber and North Yorkshire,27.0,23.5,14.4,11.4,Female,10.0,True,True
+Kent and Medway,21.4,18.5,10.7,8.1,Female,10.0,True,False
+Lancashire and South Cumbria,24.7,21.9,15.35,12.4,Female,10.0,True,True
+"Leicester, Leicestershire and Rutland",19.4,16.4,12.88,9.9,Female,10.0,True,False
+Lincolnshire,17.0,14.0,11.48,8.89,Female,10.0,True,False
+Norfolk and Suffolk,18.6,15.9,9.5,6.64,Female,10.0,True,False
+North East London,20.9,18.5,10.2,7.53,Female,10.0,True,False
+North East and North Cumbria,23.2,20.2,14.5,11.4,Female,10.0,True,True
+Northamptonshire,17.4,15.0,11.16,8.04,Female,10.0,True,False
+Nottingham and Nottinghamshire,21.6,18.7,14.1,11.04,Female,10.0,True,True
+"Shropshire, Telford and Wrekin",17.9,15.0,9.04,6.28,Female,10.0,True,False
+Somerset,16.2,13.1,8.5,5.7,Female,10.0,True,False
+South East London,17.3,14.6,9.83,7.03,Female,10.0,True,False
+South West London,19.9,16.5,10.88,8.06,Female,10.0,True,False
+South Yorkshire,22.4,19.7,13.3,10.4,Female,10.0,True,True
+Staffordshire and Stoke-on-Trent,19.8,17.8,12.9,10.1,Female,10.0,True,True
+Surrey and Sussex,23.7,21.0,10.78,7.84,Female,10.0,True,False
+Thames Valley,19.6,15.9,10.6,7.7,Female,10.0,True,False
+West Yorkshire,26.1,23.1,15.48,12.12,Female,10.0,True,True
+West and North London,23.2,20.4,11.5,8.2,Female,10.0,True,False
+"Bath and North East Somerset, Swindon and Wiltshire",18.6,15.6,8.38,5.52,Male,9.2,True,False
+Birmingham and Solihull,22.4,19.4,13.8,10.7,Male,9.2,True,True
+Black Country,18.8,15.7,10.54,7.47,Male,9.2,True,False
+"Bristol, North Somerset and South Gloucestershire",20.3,17.1,13.46,10.52,Male,9.2,True,True
+Central East,20.0,16.6,10.3,7.5,Male,9.2,True,False
+Cheshire and Merseyside,28.2,25.1,16.36,13.32,Male,9.2,True,True
+Cornwall and the Isles of Scilly,14.2,10.7,8.05,4.85,Male,9.2,True,False
+Coventry and Warwickshire,20.5,17.6,12.84,10.14,Male,9.2,True,True
+Derby and Derbyshire,20.2,17.4,13.08,10.13,Male,9.2,True,True
+Devon,18.2,15.1,10.42,7.4,Male,9.2,True,False
+Dorset,16.5,13.5,9.3,6.3,Male,9.2,True,False
+Essex,23.9,20.9,10.0,7.22,Male,9.2,True,False
+Gloucestershire,15.5,12.2,9.65,6.6,Male,9.2,True,False
+Greater Manchester,24.8,22.1,12.58,9.8,Male,9.2,True,True
+Hampshire and Isle of Wight,21.0,18.0,12.4,9.26,Male,9.2,True,True
+Herefordshire and Worcestershire,18.8,15.5,10.16,6.45,Male,9.2,True,False
+Humber and North Yorkshire,26.4,23.5,14.8,11.72,Male,9.2,True,True
+Kent and Medway,21.5,18.6,10.8,7.9,Male,9.2,True,False
+Lancashire and South Cumbria,25.3,22.4,14.6,11.05,Male,9.2,True,True
+"Leicester, Leicestershire and Rutland",20.0,16.9,10.9,8.24,Male,9.2,True,False
+Lincolnshire,18.3,15.3,12.72,9.77,Male,9.2,True,True
+Norfolk and Suffolk,20.8,18.4,9.2,6.28,Male,9.2,True,False
+North East London,17.1,14.3,8.86,5.99,Male,9.2,True,False
+North East and North Cumbria,25.4,22.1,14.8,11.9,Male,9.2,True,True
+Northamptonshire,15.3,12.2,10.86,7.82,Male,9.2,True,False
+Nottingham and Nottinghamshire,24.9,19.6,13.58,10.68,Male,9.2,True,True
+"Shropshire, Telford and Wrekin",16.7,13.4,8.86,5.66,Male,9.2,True,False
+Somerset,14.8,11.5,8.7,5.7,Male,9.2,True,False
+South East London,16.2,13.6,8.93,5.96,Male,9.2,True,False
+South West London,17.0,13.8,10.12,7.16,Male,9.2,True,False
+South Yorkshire,22.2,19.4,13.6,10.3,Male,9.2,True,True
+Staffordshire and Stoke-on-Trent,20.8,18.3,11.4,8.6,Male,9.2,True,False
+Surrey and Sussex,23.0,19.6,9.98,7.06,Male,9.2,True,False
+Thames Valley,16.5,13.7,9.4,6.1,Male,9.2,True,False
+West Yorkshire,24.4,21.8,13.54,10.5,Male,9.2,True,True
+West and North London,23.4,20.2,10.51,7.51,Male,9.2,True,False

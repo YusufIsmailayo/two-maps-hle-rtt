@@ -73,8 +73,18 @@ def main() -> None:
         # HLE gap between best- and worst-waiting trusts' catchments
         q = tc10.sort_values("pct_within_18")
         lo, hi = q.head(len(q) // 4), q.tail(len(q) // 4)
-        rows.append({"sex": sex, "measure": "median catchment HLE: worst-quartile-waiting trusts vs best-quartile (years)",
+        # Two different statistics, and the article has to name which it uses.
+        # The first is a median of trust-level medians - each trust counts once,
+        # however many neighbourhoods it serves. The second pools the actual
+        # neighbourhoods. They do not agree, and the pooled one is what a reader
+        # hears when you say "the neighbourhoods they serve".
+        rows.append({"sex": sex, "measure": "MEDIAN OF TRUST MEDIANS, catchment HLE: worst-quartile-waiting vs best-quartile (years)",
                      "value": f"{lo.hle_median.median():.1f} vs {hi.hle_median.median():.1f}", "n": len(lo)})
+        pooled_lo = j[j.trust_code.isin(lo.trust_code)][col]
+        pooled_hi = j[j.trust_code.isin(hi.trust_code)][col]
+        rows.append({"sex": sex, "measure": "POOLED MSOA median HLE: worst-quartile-waiting vs best-quartile (years)",
+                     "value": f"{pooled_lo.median():.1f} vs {pooled_hi.median():.1f}",
+                     "n": f"{len(pooled_lo)} vs {len(pooled_hi)} MSOAs"})
 
     s = pd.DataFrame(rows)
     s.to_csv(OUT / "joined_summary.csv", index=False)

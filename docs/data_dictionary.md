@@ -38,6 +38,8 @@ Same measures from the Fingertips API (indicator 94359). `value_note` as served.
 | pct_within_18, pct_over_52 | recomputed, not published percentages |
 | provider_kind | NHS trust (R-code) / independent sector (N-code) / other |
 
+Rows with commissioner code `NONC` (no identified commissioner) are dropped here, as NHS England's published provider workbook drops them; the step prints the volume removed. Trust code successions (`RVJ`→`RA7` from 2026-07) are applied at join time in Gold, not here, so Silver keeps the codes as submitted.
+
 `rtt/rtt_provider_tfc.parquet` — same at period × provider × treatment function.
 
 ### `catchment/msoa_trust_admissions.parquet` — grain: admission_type × catchment_year × msoa_code × trust_code
@@ -60,7 +62,7 @@ Same measures from the Fingertips API (indicator 94359). `value_note` as served.
 - `01_spread/spread_summary.csv` — within vs between, per sex and measure; variance split; ONS-42-ICB benchmark.
 - `01_spread/msoa_hle_icb.parquet` — chart input.
 - `01_spread/lad_spread.csv` — LAD × sex: the same measures one level down, plus `meets_min_msoa` (≥10 MSOAs).
-- `01_spread/lad_spread_summary.csv` — per sex across LADs with ≥10 MSOAs: median/p90/max within-LAD range, the widest LAD and its min–max, median within-LAD IQR, the range of LAD medians, and how many LADs span ≥13 years internally.
+- `01_spread/lad_spread_summary.csv` — per sex across LADs with ≥10 MSOAs: median/p90/max within-LAD range, the widest LAD and its min–max, median within-LAD IQR, the range of LAD medians, how many LADs span ≥13 years internally, and — separately — the median and p90 absolute difference over *every pair* of MSOAs inside the same council, with the share of pairs ≥13 years. The range measures extremes; the pairwise columns measure a typical comparison. They are not interchangeable.
 - `02_crosswalk/crosswalk_findings.csv` — routes A–D, each test and result.
 - `02_crosswalk/A_icb_table.csv` — ICB × HLE summary × RTT × leakage.
 - `02_crosswalk/A_icb_resident_leakage.csv`, `A_trust_patient_leakage.csv`.
@@ -70,4 +72,5 @@ Same measures from the Fingertips API (indicator 94359). `value_note` as served.
 - `04_chart/icb_strip_hle.png`.
 - `06_specialty/specialty_18wk.csv` — period × treatment function: pathways, within 18 weeks, over 52 weeks, recomputed shares, and the gap to the 92% standard in percentage points.
 - `06_specialty/specialty_headline.csv` — the headline month, worst-performing first, with the England total appended as a final row.
+- `07_ci_robustness/ci_robustness.csv` — ICB × sex: point-estimate and CI-shrunk (fixed-extremes) internal range and interdecile, the between-ICB median spread, and whether the conservative version still exceeds it.
 - `05_months/by_month.csv` — per RTT month: England 18-week share, MSOA-level and ICB-level correlations (Pearson, Spearman, admissions-weighted).

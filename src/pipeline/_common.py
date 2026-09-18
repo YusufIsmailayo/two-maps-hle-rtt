@@ -41,3 +41,35 @@ def write_metadata(folder: Path, **fields) -> None:
 
 def now_utc() -> str:
     return datetime.now(timezone.utc).isoformat(timespec="seconds")
+
+
+# ---------------------------------------------------------------- RTT quirks
+#
+# Two corrections I had to make after auditing the July 2026 join. Both are
+# here rather than inline so every script that touches RTT sees the same rule.
+
+#: Commissioner code used in the RTT full extract for activity with no
+#: identified commissioner. NHS England's published provider workbook excludes
+#: these rows: the July 2026 extract totals 7,162,692 incomplete pathways with
+#: them and 7,131,685 without, and the workbook says 7,131,685. I keep the rows
+#: in Bronze and drop them when reporting the published measure.
+RTT_UNIDENTIFIED_COMMISSIONER = "NONC"
+
+#: Trust code successions. A trust that merges stops submitting under its old
+#: code, which looks exactly like a non-submission if you only join on codes.
+#: (old code, surviving code, first period the survivor carries the old trust's
+#: activity). North Bristol merged into Bristol NHS Foundation Trust on
+#: 1 July 2026; RA7's July list is roughly RA7 + RVJ from June.
+TRUST_SUCCESSIONS = [
+    ("RVJ", "RA7", "2026-07"),
+]
+
+
+def apply_trust_successions(codes, period: str):
+    """Map superseded trust codes to their successor, for one RTT period.
+
+    Returns `codes` unchanged for periods before a merger took effect, so
+    April-June 2026 keep RVJ and RA7 as the two distinct trusts they were.
+    """
+    mapping = {old: new for old, new, eff in TRUST_SUCCESSIONS if period >= eff}
+    return codes.replace(mapping) if mapping else codes
