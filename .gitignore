@@ -17,3 +17,9 @@ data/silver/*
 !data/silver/.gitkeep
 
 # Gold: committed (small) so findings and the chart are inspectable without a rebuild
+
+# Files this session dropped here; not part of the repo
+Claude outputs/
+
+# Copies this session dropped here; not part of the repo
+Claude outputs/

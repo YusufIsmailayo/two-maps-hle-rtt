@@ -37,6 +37,39 @@ ACCENT = "#2a78d6"   # series-1
 BAND = "#eb6834"     # series-2, used only for the between-ICB band
 
 
+def beeswarm_offsets(values: np.ndarray, bin_width: float = 0.1, max_spread: float = 0.34) -> np.ndarray:
+    """Deterministic vertical offsets so a row of neighbourhoods reads as a shape.
+
+    The first version of this chart scattered each row's MSOAs with random
+    jitter. With up to 400 marks in a row 60px tall, random placement stops
+    being a distribution and becomes grain - the plot looked dirty, and the
+    dirt carried no information. Here each value is binned on x and the points
+    in a bin are dealt symmetrically outwards from the row's centre line, so
+    vertical thickness means local density and nothing else. The bin width
+    matches the data's own grid - ONS publishes HLE to one decimal - so a
+    column is one distinct published value rather than an arbitrary bucket.
+    Where a bin is deeper than the row can hold, the column is compressed to
+    fit rather than bleeding into its neighbours.
+    """
+    order = np.argsort(values, kind="stable")
+    offsets = np.zeros(len(values))
+    bins = np.floor(values[order] / bin_width).astype(int)
+    start = 0
+    for b in range(len(bins)):
+        if b + 1 < len(bins) and bins[b + 1] == bins[start]:
+            continue
+        column = order[start:b + 1]
+        k = len(column)
+        # deal outwards: 0, +1, -1, +2, -2 ... then scale to fit the row
+        seq = np.zeros(k)
+        for i in range(k):
+            seq[i] = ((i + 1) // 2) * (1 if i % 2 else -1)
+        step = min(0.042, max_spread / max(abs(seq).max(), 1))
+        offsets[column] = seq * step
+        start = b + 1
+    return offsets
+
+
 def main() -> None:
     m = pd.read_parquet(GOLD_DIR / "01_spread" / "msoa_hle_icb.parquet").dropna(subset=["hle"])
     icb = pd.read_csv(GOLD_DIR / "02_crosswalk" / "A_icb_table.csv")
@@ -44,23 +77,22 @@ def main() -> None:
     ypos = {name: i for i, name in enumerate(order)}
     rtt = icb.set_index("icb_name_short").pct_within_18
 
-    fig, axes = plt.subplots(1, 2, figsize=(14, 12), sharey=True)
+    fig, axes = plt.subplots(1, 2, figsize=(14, 15), sharey=True)
     fig.patch.set_facecolor("#fcfcfb")
-    rng = np.random.default_rng(7)
     xlo, xhi = m.hle.min() - 1.5, m.hle.max() + 1.5
     for ax, sex in zip(axes, ["Male", "Female"]):
         d = m[m.sex == sex]
         med = d.groupby("icb_name_short").hle.median()
         lo, hi = med.min(), med.max()
-        ax.axvspan(lo, hi, color=BAND, alpha=0.22, lw=0, zorder=0)
+        ax.axvspan(lo, hi, color=BAND, alpha=0.09, lw=0, zorder=0)
         for edge in (lo, hi):
-            ax.axvline(edge, color=BAND, lw=1.1, alpha=0.9, zorder=1)
+            ax.axvline(edge, color=BAND, lw=1.3, alpha=0.95, zorder=3)
         ax.set_facecolor("#fcfcfb")
         for name, g in d.groupby("icb_name_short"):
             y = ypos[name]
-            jitter = rng.uniform(-0.28, 0.28, len(g))
-            ax.scatter(g.hle, y + jitter, s=9, color=MUTED, alpha=0.45, lw=0, zorder=2)
-            ax.scatter([med[name]], [y], s=64, color=ACCENT, edgecolor="#fcfcfb", lw=1.2, zorder=4)
+            ax.scatter(g.hle, y + beeswarm_offsets(g.hle.to_numpy()), s=4,
+                       color=MUTED, alpha=0.75, lw=0, zorder=2)
+            ax.scatter([med[name]], [y], s=54, color=ACCENT, edgecolor="#fcfcfb", lw=1.1, zorder=4)
         ax.set_yticks(range(len(order)))
         ax.set_yticklabels(order, fontsize=8.5, color=INK2)
         ax.set_xlim(xlo, xhi)
