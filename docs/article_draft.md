@@ -1,5 +1,5 @@
 <!--
-DRAFT v5 — 18 Sep 2026. PRE-PUBLICATION CHECKLIST:
+DRAFT v6 — 2 Nov 2026. PRE-PUBLICATION CHECKLIST:
   1. Delete this whole comment block.
   2. Strip every [bracketed/file.csv] source tag — search for "[0" — there are
      about a dozen. They exist so each figure can be checked against the repo.
@@ -14,6 +14,15 @@ The opening leads on the first, the second paragraph gives the second, and the
 third corrects for the fact that the first two are extremes. Do not let an
 edit collapse them into one number.
 
+v6 fixes, all verified against data/gold/ on 2 Nov 2026:
+  - no-footprint share 7.1% -> 7.2% (stale: the NONC correction cut the
+    denominator to 7,131,685, moving the share to 7.1728%)
+  - the correlation n is 6,688 for men, 6,689 for women; the draft gave the
+    female n for both
+  - the opening's 73/48 are MALE figures and said so nowhere, which also left
+    "widest council in England" unqualified — true for men, but Bradford is
+    widest for women
+
 Title: settled on the paradox mode. The original — "Refuse to Line Up" — is
 not true of what the data showed, and writing around it would have been the
 dishonest option.
@@ -27,11 +36,11 @@ dishonest option.
 
 Somewhere in England this morning, two people are getting up in the same borough.
 
-One of them lives in a neighbourhood where healthy life expectancy is 73 years. The other lives in a neighbourhood where it is 48. Same country. Same NHS. Same council, same bin collection, same local election. Twenty-five years between the two places, before either person is ill.
+One of them lives in a neighbourhood where healthy life expectancy for men is 73 years. The other lives in a neighbourhood where it is 48. Same country. Same NHS. Same council, same bin collection, same local election. Twenty-five years between the two places, before either person is ill.
 
 Those are real neighbourhoods and I can name them: Wirral 028 and Wirral 016 [01_spread/lad_spread.csv]. Forty other Wirral neighbourhoods sit between them. And the gap is not an artefact of small numbers — take the cautious end of each estimate, the bottom of one interval against the top of the other, and they are still twenty-two years apart.
 
-Wirral is the widest council in England on this measure. It is not a freak. Of the 277 English local authorities large enough to measure, the typical one spans 13.3 years of healthy life between its best neighbourhood and its worst, and 144 of them span thirteen years or more [01_spread/lad_spread_summary.csv].
+Wirral is the widest council in England on that measure; for women the widest is Bradford, at 25.9 years. Either way it is not a freak. Of the 277 English local authorities large enough to measure, the typical one spans 13.3 years of healthy life between its best neighbourhood and its worst for men, 13.6 for women — and 144 and 148 of them respectively span thirteen years or more [01_spread/lad_spread_summary.csv].
 
 Pick two neighbourhoods in the same council at random, though, and they differ by about four years — not thirteen, and nothing like twenty-five. The wide pair is real, and it sits inside most councils in England — but you have to go looking for the ends of the range to find it. You do not need to cross a county. You need to know which bus.
 
@@ -62,7 +71,7 @@ The premise I started with was that there is no clean way to get from a neighbou
 It is a crosswalk. It is not a clean one, and the pipeline measures how unclean [02_crosswalk/crosswalk_findings.csv]:
 
 - The dominant trust takes, for the typical neighbourhood, 76% of its elective admissions. For one neighbourhood in twelve it takes under half.
-- It covers acute trusts only. 403 of the 533 providers reporting waiting lists — independent-sector clinics, community services, the smaller NHS bodies — have no residence footprint at all. Between them they hold 7.1% of the national waiting list.
+- It covers acute trusts only. 403 of the 533 providers reporting waiting lists — independent-sector clinics, community services, the smaller NHS bodies — have no residence footprint at all. Between them they hold 7.2% of the national waiting list.
 - It is built on admissions, not on referrals. Change from all admissions to elective ones and 126 neighbourhoods change their main hospital.
 - And it is only as good as the month's return. Sheffield Teaching Hospitals and Torbay are absent from every month I pulled; Plymouth stopped in July. That leaves 167 neighbourhoods with a main hospital and no figure for it.
 
@@ -72,7 +81,7 @@ Then I ran the correlation.
 
 ## Nothing
 
-The correlation between a neighbourhood's healthy life expectancy and the 18-week performance of the hospital its residents mostly use is −0.004 for men and −0.002 for women, across 6,689 neighbourhoods [03_joined/joined_summary.csv]. Weighting by every trust a neighbourhood uses rather than just the biggest: −0.004 and −0.004. Rank-order correlation comes out marginally positive, +0.007 and +0.010, which at this magnitude means the same thing as marginally negative — nothing. Run it for April, May and June as well and it stays between −0.020 and −0.002 across all four months [05_months/by_month.csv].
+The correlation between a neighbourhood's healthy life expectancy and the 18-week performance of the hospital its residents mostly use is −0.004 for men and −0.002 for women, across 6,688 neighbourhoods and 6,689 respectively [03_joined/joined_summary.csv]. Weighting by every trust a neighbourhood uses rather than just the biggest: −0.004 and −0.004. Rank-order correlation comes out marginally positive, +0.007 and +0.010, which at this magnitude means the same thing as marginally negative — nothing. Run it for April, May and June as well and it stays between −0.020 and −0.002 across all four months [05_months/by_month.csv].
 
 Before going further: healthy life expectancy here describes 2019 to 2023 and the waiting figures describe 2026. What this tests is whether places with different historical health profiles are currently served by providers with systematically different waiting performance. It is not a test of whether waiting harms health, and nothing below should be read as one.
 
