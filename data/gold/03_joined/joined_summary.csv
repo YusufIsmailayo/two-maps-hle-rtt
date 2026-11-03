@@ -9,7 +9,7 @@ Male,"range of trust-catchment HLE medians, years",13.5,115
 Male,range of FPTP trusts' 18wk% (pp),34.1,115
 Male,IQR of FPTP trusts' 18wk% (pp),7.1,115
 Male,"MEDIAN OF TRUST MEDIANS, catchment HLE: worst-quartile-waiting vs best-quartile (years)",65.8 vs 65.1,28
-Male,dominant trust's 18wk%: bottom vs top HLE DECILE of neighbourhoods,64.0% vs 64.9% (0.9 pp apart),716 vs 717 MSOAs
+Male,dominant trust's 18wk%: bottom vs top HLE DECILE of neighbourhoods,64.0% vs 65.2% (1.2 pp apart),686 vs 671 MSOAs
 Male,POOLED MSOA median HLE: worst-quartile-waiting vs best-quartile (years),65.0 vs 65.2,1890 vs 1352 MSOAs
 Female,pearson r: MSOA HLE vs FPTP trust 18wk%,-0.002,6689
 Female,spearman rho: MSOA HLE vs FPTP trust 18wk%,0.01,6689
@@ -21,5 +21,5 @@ Female,"range of trust-catchment HLE medians, years",14.5,115
 Female,range of FPTP trusts' 18wk% (pp),34.1,115
 Female,IQR of FPTP trusts' 18wk% (pp),7.1,115
 Female,"MEDIAN OF TRUST MEDIANS, catchment HLE: worst-quartile-waiting vs best-quartile (years)",66.8 vs 67.2,28
-Female,dominant trust's 18wk%: bottom vs top HLE DECILE of neighbourhoods,63.9% vs 64.9% (1.0 pp apart),694 vs 717 MSOAs
+Female,dominant trust's 18wk%: bottom vs top HLE DECILE of neighbourhoods,63.9% vs 64.9% (1.0 pp apart),670 vs 706 MSOAs
 Female,POOLED MSOA median HLE: worst-quartile-waiting vs best-quartile (years),66.2 vs 66.9,1890 vs 1352 MSOAs

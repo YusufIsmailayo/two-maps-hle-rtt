@@ -3,7 +3,8 @@ DRAFT v6 — 2 Nov 2026. PRE-PUBLICATION CHECKLIST:
   1. Delete this whole comment block.
   2. Strip every [bracketed/file.csv] source tag — search for "[0" — there are
      about a dozen. They exist so each figure can be checked against the repo.
-  3. Insert the two _medium.png charts at the [CHART 1]/[CHART 2] markers,
+  3. Insert the four images at the [CHART 1]-[CHART 4] markers; the ICB strip
+     plots must be the _medium.png variants, not icb_strip_hle.png,
      one after the other, then delete the marker lines. Use the single-panel
      _medium variants, NOT icb_strip_hle.png: the two-panel canonical chart
      has 8.5pt row labels that land at ~6 screen pixels in a 700px article
@@ -44,13 +45,15 @@ One of them lives in a neighbourhood where healthy life expectancy for men is 73
 
 Those are real neighbourhoods and I can name them: Wirral 028 and Wirral 016 [01_spread/lad_spread.csv]. Forty other Wirral neighbourhoods sit between them. And the gap is not an artefact of small numbers — take the cautious end of each estimate, the bottom of one interval against the top of the other, and they are still twenty-two years apart.
 
+[CHART 1: data/gold/04_chart/wirral_row.png]
+
 Wirral is the widest council in England on that measure; for women the widest is Bradford, at 25.9 years. Either way it is not a freak. Of the 277 English local authorities large enough to measure, the typical one spans 13.3 years of healthy life between its best neighbourhood and its worst for men, 13.6 for women — and 144 and 148 of them respectively span thirteen years or more [01_spread/lad_spread_summary.csv].
 
 Pick two neighbourhoods in the same council at random, though, and they differ by about four years — not thirteen, and nothing like twenty-five. The wide pair is real, and it sits inside most councils in England — but you have to go looking for the ends of the range to find it. You do not need to cross a county. You need to know which bus.
 
 ## What was published on 2 September
 
-The Office for Health Improvement and Disparities added one thing to its Local health profile this month: healthy life expectancy for 2019 to 2023, for every middle-layer super output area in England. An MSOA is a statistical neighbourhood of roughly five to fifteen thousand people. There are 6,856 of them.
+The Office for Health Improvement and Disparities added one thing to its Local health profile on 2 September: healthy life expectancy for 2019 to 2023, for every middle-layer super output area in England. An MSOA is a statistical neighbourhood of roughly five to fifteen thousand people. There are 6,856 of them.
 
 Healthy life expectancy is not life expectancy. It is the number of years a newborn could expect to live in what people themselves describe as good health, if the conditions of the period held for their whole life. The figures are ONS's, built from five years of deaths and the health question on the 2021 Census. For England as a whole: 65.1 years for men, 66.5 for women [00_reconciliation/reconciliation.csv] — the England-level estimate, which is not the same statistic as the median across England's neighbourhoods, 65.3 and 66.8. The pandemic sits inside every one of those numbers.
 
@@ -87,9 +90,11 @@ Then I ran the correlation.
 
 The correlation between a neighbourhood's healthy life expectancy and the 18-week performance of the hospital its residents mostly use is −0.004 for men and −0.002 for women, across 6,688 neighbourhoods and 6,689 respectively [03_joined/joined_summary.csv]. Weighting by every trust a neighbourhood uses rather than just the biggest: −0.004 and −0.004. Rank-order correlation comes out marginally positive, +0.007 and +0.010, which at this magnitude means the same thing as marginally negative — nothing. Run it for April, May and June as well and it stays between −0.020 and −0.002 across all four months [05_months/by_month.csv].
 
+[CHART 2: data/gold/04_chart/null_scatter.png]
+
 Before going further: healthy life expectancy here describes 2019 to 2023 and the waiting figures describe 2026. What this tests is whether places with different historical health profiles are currently served by providers with systematically different waiting performance. It is not a test of whether waiting harms health, and nothing below should be read as one.
 
-In plain terms, and measured rather than inferred — a correlation of zero doesn't by itself tell you the extremes behave: take England's tenth of neighbourhoods with the lowest healthy life expectancy and its healthiest tenth, and the hospitals they mostly use sit 0.9 percentage points apart on eighteen-week performance, 64.0% against 64.9% [03_joined/joined_summary.csv]. Across all trusts the spread is thirty-four points.
+In plain terms, and measured rather than inferred — a correlation of zero doesn't by itself tell you how the extremes behave: take England's tenth of neighbourhoods with the lowest healthy life expectancy and its healthiest tenth, and the hospitals they mostly use sit 1.2 percentage points apart on eighteen-week performance, 64.0% against 65.2% [03_joined/joined_summary.csv]. Across all trusts the spread is thirty-four points.
 
 You can come at it from the other direction and get the same answer. Take the quarter of main hospitals with the worst 18-week performance and the quarter doing best, and compare the neighbourhoods behind them. Pool those neighbourhoods and the median healthy life expectancy for men is 65.0 years for the worst-waiting group against 65.2 for the best — 1,890 neighbourhoods against 1,352 [03_joined/joined_summary.csv]. Count each hospital once instead, taking the median of their catchment medians, and it comes out 65.8 against 65.1, tilted the other way. Two defensible statistics, two-tenths and seven-tenths of a year apart, pointing in opposite directions. Against a twenty-year spread inside a single ICB, neither is a gradient.
 
@@ -105,12 +110,12 @@ The reply I expected to this piece was: you don't need a neighbourhood-to-hospit
 
 Two things happen when you do [02_crosswalk/A_icb_table.csv].
 
-The first is leakage. Fourteen per cent of elective admissions in England are treated by a trust whose parent ICB is not the patient's. Turn that around and view it from where people live: the typical ICB sees 14% of its residents' acute admissions go to trusts it does not manage, and Staffordshire and Stoke-on-Trent sees 47% — to Burton, to Wolverhampton, to Birmingham, none of which report to it. The traffic runs the other way too. Frimley Health draws four-fifths of its patients from outside the ICB it belongs to.
+The first is leakage. Fourteen per cent of elective admissions in England are treated by a trust whose parent ICB is not the patient's. Turn that around and view it from where people live: the typical ICB sees 13.8% of its residents' admissions go to trusts it does not manage, and Staffordshire and Stoke-on-Trent sees 47% — to Burton, to Wolverhampton, to Birmingham, none of which report to it. The traffic runs the other way too. Frimley Health draws four-fifths of its patients from outside the ICB it belongs to.
 
 The second is the chart.
 
-[CHART 1: data/gold/04_chart/icb_strip_hle_male_medium.png]
-[CHART 2: data/gold/04_chart/icb_strip_hle_female_medium.png]
+[CHART 3: data/gold/04_chart/icb_strip_hle_male_medium.png]
+[CHART 4: data/gold/04_chart/icb_strip_hle_female_medium.png]
 
 Each row is one of England's 36 ICBs, in the same order in both charts. Each grey mark is a neighbourhood's healthy life expectancy. The blue mark is the ICB's median. The orange band is the entire distance between the highest-median ICB and the lowest — Thames Valley to Birmingham and Solihull, 9.2 years for men, 10.0 for women [01_spread/spread_summary.csv].
 
@@ -118,7 +123,7 @@ Every row is wider than the band. Not most rows: every one. Cornwall, the tighte
 
 You might reasonably ask whether that survives the estimates' error bars — each neighbourhood's figure carries a 95% interval about three years wide, and the chart plots points. So I gave the claim a deliberately conservative test: take each ICB's healthiest neighbourhood at the bottom of its interval and its least healthy at the top, shrinking every row by roughly two intervals' worth before comparing. All 36 rows are still wider than the band [07_ci_robustness/ci_robustness.csv]. The narrowest survivor clears it by a year and a half.
 
-The two rows I've annotated are the top and bottom of the chart. Thames Valley's providers had 67% of their pathways within 18 weeks in July. Birmingham and Solihull's had 69%. Nine and a half years of healthy life apart, and the better-waiting one is the one at the bottom.
+The two rows I've annotated are the top and bottom of the chart. Thames Valley's providers had 67% of their pathways within 18 weeks in July. Birmingham and Solihull's had 69%. Nine years of healthy life apart, and the better-waiting one is the one at the bottom.
 
 An ICB-level waiting figure, attached to a neighbourhood, is a number for a population that differs from itself by twenty years. That isn't a join. It's an average wearing a postcode.
 
