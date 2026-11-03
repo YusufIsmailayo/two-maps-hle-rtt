@@ -127,6 +127,76 @@ def main() -> None:
     fig.savefig(OUT / "icb_strip_hle.png", dpi=180, facecolor=fig.get_facecolor())
     print("wrote", OUT / "icb_strip_hle.png")
 
+    for sex in ["Male", "Female"]:
+        single_panel(m, order, ypos, rtt, sex, xlo, xhi)
+
+
+SHORT_NAME = {
+    "Bath and North East Somerset, Swindon and Wiltshire": "Bath & NE Somerset, Swindon & Wiltshire",
+    "Bristol, North Somerset and South Gloucestershire": "Bristol, N Somerset & S Gloucestershire",
+    "Leicester, Leicestershire and Rutland": "Leicester, Leicestershire & Rutland",
+}
+
+
+def single_panel(m, order, ypos, rtt, sex, xlo, xhi) -> None:
+    """One sex, one panel, typeset for a ~700px article column.
+
+    The two-panel chart above is the canonical artefact, but at Medium's
+    column width its 8.5pt row labels land at about six screen pixels and
+    the ICB names stop being readable - worse on a phone. These variants
+    give each panel the full column, size the type for the downscale, and
+    keep the two annotations clear of the spread label and the axis by
+    reserving headroom above and below the rows rather than by moving them
+    into the data.
+    """
+    fig, ax = plt.subplots(figsize=(8.6, 11.5))
+    fig.patch.set_facecolor("#fcfcfb")
+    ax.set_facecolor("#fcfcfb")
+    d = m[m.sex == sex]
+    med = d.groupby("icb_name_short").hle.median()
+    lo, hi = med.min(), med.max()
+    ax.axvspan(lo, hi, color=BAND, alpha=0.09, lw=0, zorder=0)
+    for edge in (lo, hi):
+        ax.axvline(edge, color=BAND, lw=1.4, alpha=0.95, zorder=3)
+    for name, g in d.groupby("icb_name_short"):
+        y = ypos[name]
+        ax.scatter(g.hle, y + beeswarm_offsets(g.hle.to_numpy()), s=4.5,
+                   color=MUTED, alpha=0.75, lw=0, zorder=2)
+        ax.scatter([med[name]], [y], s=62, color=ACCENT, edgecolor="#fcfcfb", lw=1.2, zorder=4)
+    ax.set_yticks(range(len(order)))
+    ax.set_yticklabels([SHORT_NAME.get(n, n).replace(" and ", " & ") for n in order],
+                       fontsize=10.5, color=INK2)
+    ax.set_xlim(xlo, xhi)
+    ax.set_ylim(-3.0, len(order) + 3.0)
+    ax.set_xlabel(f"Healthy life expectancy at birth, {sex.lower()}s, 2019\u201323 (years)", fontsize=11.5, color=INK2)
+    ax.tick_params(axis="x", labelsize=10.5, colors=INK2)
+    ax.grid(axis="x", color=GRID, lw=0.8, zorder=1)
+    for sp in ["top", "right", "left"]:
+        ax.spines[sp].set_visible(False)
+    ax.spines["bottom"].set_color(GRID)
+    ax.tick_params(axis="y", length=0)
+    ax.text(lo + (hi - lo) / 2, len(order) + 2.1, f"spread of the 36 ICB medians: {hi - lo:.1f} yrs",
+            ha="center", va="bottom", fontsize=10.5, color=BAND)
+    for name, dy, va in [(order[-1], 0.75, "bottom"), (order[0], -0.75, "top")]:
+        ax.annotate(f"providers parented by this ICB: {rtt[name]:.0%} within 18 wks",
+                    xy=(xhi, ypos[name] + dy), fontsize=9.5, color=INK2, va=va, ha="right")
+
+    fig.suptitle(f"Inside every ICB, neighbourhood healthy life expectancy ({sex.lower()}s)\nspans more years than separate the best and worst ICB",
+                 fontsize=14.5, color=INK, x=0.012, ha="left", y=0.988, linespacing=1.25)
+    fig.text(0.012, 0.936, "Each grey mark is one of England's 6,856 MSOAs. Blue: the ICB's median.\n"
+             "Orange band: the whole distance between the highest- and lowest-median ICB.\n"
+             "Rows ordered by male median, the same order in both charts.",
+             fontsize=10, color=INK2, linespacing=1.3, va="top")
+    fig.text(0.012, 0.014, "Source: ONS, Health state life expectancy estimates for MSOAs, England and Wales: 2019 to 2023\n"
+             "(30 Jul 2026), via OHID Local health; ONS Open Geography Portal LSOA\u2192ICB (Apr 2026); NHS England RTT,\n"
+             "July 2026. Census-2021-based HLE: not comparable with the APS national series.",
+             fontsize=8.5, color=INK2, linespacing=1.3, va="bottom")
+    fig.tight_layout(rect=(0, 0.062, 1, 0.912))
+    out = OUT / f"icb_strip_hle_{sex.lower()}_medium.png"
+    fig.savefig(out, dpi=170, facecolor=fig.get_facecolor())
+    plt.close(fig)
+    print("wrote", out)
+
 
 if __name__ == "__main__":
     main()

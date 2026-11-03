@@ -3,7 +3,11 @@ DRAFT v6 — 2 Nov 2026. PRE-PUBLICATION CHECKLIST:
   1. Delete this whole comment block.
   2. Strip every [bracketed/file.csv] source tag — search for "[0" — there are
      about a dozen. They exist so each figure can be checked against the repo.
-  3. Insert data/gold/04_chart/icb_strip_hle.png at the [CHART] marker.
+  3. Insert the two _medium.png charts at the [CHART 1]/[CHART 2] markers,
+     one after the other, then delete the marker lines. Use the single-panel
+     _medium variants, NOT icb_strip_hle.png: the two-panel canonical chart
+     has 8.5pt row labels that land at ~6 screen pixels in a 700px article
+     column, and the ICB names stop being readable (worse on a phone).
 
 Three different statistics about the same thing, deliberately kept distinct:
   ~25 years — the gap between the two ends of Wirral, a real named pair
@@ -105,9 +109,10 @@ The first is leakage. Fourteen per cent of elective admissions in England are tr
 
 The second is the chart.
 
-[CHART: data/gold/04_chart/icb_strip_hle.png]
+[CHART 1: data/gold/04_chart/icb_strip_hle_male_medium.png]
+[CHART 2: data/gold/04_chart/icb_strip_hle_female_medium.png]
 
-Each row is one of England's 36 ICBs. Each grey mark is a neighbourhood's healthy life expectancy. The blue mark is the ICB's median. The orange band is the entire distance between the highest-median ICB and the lowest — Thames Valley to Birmingham and Solihull, 9.2 years for men, 10.0 for women [01_spread/spread_summary.csv].
+Each row is one of England's 36 ICBs, in the same order in both charts. Each grey mark is a neighbourhood's healthy life expectancy. The blue mark is the ICB's median. The orange band is the entire distance between the highest-median ICB and the lowest — Thames Valley to Birmingham and Solihull, 9.2 years for men, 10.0 for women [01_spread/spread_summary.csv].
 
 Every row is wider than the band. Not most rows: every one. Cornwall, the tightest ICB in England, spans 14.2 years of healthy life between its best neighbourhood and its worst. Cheshire and Merseyside spans 28. The median ICB spans 20. Four-fifths of all the variation in healthy life expectancy between English neighbourhoods is variation *inside* ICBs, not between them.
 
